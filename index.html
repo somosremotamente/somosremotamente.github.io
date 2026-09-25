@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Somos Remotamente · Academia virtual de formación digital</title>
+<meta name="description" content="Academia virtual asincrónica de habilidades digitales y trabajo remoto para Latinoamérica. Cada curso se aprueba con cuatro entregables evaluados con criterios publicados.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   SOMOS REMOTAMENTE — TOKENS DE MARCA
+   Fuente canónica: Manual de Identidad Visual 2025
+   Corn = principal · Lavender = secundario · Pear = SOLO acento
+   Beige = fondo suave · Ink = texto
+   Tipografías: Yusei Magic (títulos) + Karla (cuerpo)
+   ============================================================ */
+:root{
+  --corn:#FFE45C;
+  --corn-40:#FFF3B9;
+  --corn-20:#FFF9DC;
+  --lavender:#A184E4;
+  --lavender-40:#DCD2F5;
+  --lavender-20:#EFEAFA;
+  --pear:#C2CF38;
+  --beige:#F5F4E2;
+  --ink:#141414;
+  --ink-60:#5C5C5C;
+  --ink-30:#B4B4B4;
+  --paper:#FFFFFF;
+
+  --line:2px solid var(--ink);
+  --line-thin:1.5px solid var(--ink);
+  --pop:6px 6px 0 var(--ink);
+  --pop-sm:4px 4px 0 var(--ink);
+  --r-lg:26px;
+  --r-md:18px;
+  --r-sm:12px;
+
+  --h1:clamp(2.4rem,6vw,4.6rem);
+  --h2:clamp(1.9rem,4vw,3rem);
+  --h3:clamp(1.25rem,2.2vw,1.7rem);
+  --body:1.0625rem;
+  --small:.9375rem;
+  --tiny:.8125rem;
+
+  --pad:clamp(1.25rem,5vw,4rem);
+  --max:1200px;
+  --nav-h:76px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+body{
+  margin:0;
+  font-family:'Karla',system-ui,sans-serif;
+  font-size:var(--body);
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.font-display{font-family:'Yusei Magic',system-ui,sans-serif;font-weight:400;line-height:1.12;letter-spacing:-.01em}
+h1{font-size:var(--h1);margin:0 0 .5em}
+h2{font-size:var(--h2);margin:0 0 .6em}
+h3{font-size:var(--h3);margin:0 0 .5em}
+p{margin:0 0 1em;max-width:66ch}
+a{color:inherit}
+img,svg{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--lavender);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.band{padding-block:clamp(3.5rem,8vw,6.5rem)}
+.band--beige{background:var(--beige)}
+.band--corn{background:var(--corn)}
+.band--lav{background:var(--lavender)}
+.band--ink{background:var(--ink);color:var(--beige)}
+.band--ink h2,.band--ink h3{color:var(--corn)}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;
+  padding:.8rem 1.5rem;border:var(--line);border-radius:999px;
+  background:var(--paper);text-decoration:none;font-weight:700;font-size:var(--small);
+  cursor:pointer;box-shadow:var(--pop-sm);transition:transform .12s ease,box-shadow .12s ease;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn--corn{background:var(--corn)}
+.btn--lav{background:var(--lavender)}
+.btn--ink{background:var(--ink);color:var(--corn);border-color:var(--ink)}
+.btn--ghost{background:transparent;box-shadow:none}
+.btn--ghost:hover{box-shadow:var(--pop-sm)}
+.btn--sm{padding:.5rem 1rem;font-size:var(--tiny)}
+.btn--block{width:100%;justify-content:center}
+.btn[disabled]{opacity:.45;pointer-events:none}
+
+/* ---------- Tarjetas ---------- */
+.card{
+  background:var(--paper);border:var(--line);border-radius:var(--r-md);
+  padding:1.6rem;box-shadow:var(--pop-sm);
+}
+.card--flat{box-shadow:none}
+.card--beige{background:var(--beige)}
+.card--corn{background:var(--corn)}
+.card--lav{background:var(--lavender)}
+.grid{display:grid;gap:1.25rem}
+.g-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g-4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+
+.tag{
+  display:inline-block;padding:.25rem .7rem;border:var(--line-thin);border-radius:999px;
+  font-size:var(--tiny);font-weight:700;background:var(--paper);
+}
+.tag--pear{background:var(--pear)}
+.tag--lav{background:var(--lavender-40)}
+.tag--corn{background:var(--corn)}
+
+.lead{font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.55}
+.muted{color:var(--ink-60)}
+.center{text-align:center}
+.stack>*+*{margin-top:1rem}
+.hide{display:none!important}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:60;background:var(--paper);
+  border-bottom:var(--line);height:var(--nav-h);display:flex;align-items:center;
+}
+.site-header__in{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex-shrink:0}
+.brand svg{width:38px;height:auto}
+.brand b{font-family:'Yusei Magic';font-size:1.05rem;line-height:1;font-weight:400}
+.brand span{display:block;font-size:.62rem;letter-spacing:.16em;color:var(--ink-60);font-family:'Karla';margin-top:2px}
+.nav{display:flex;gap:.25rem;margin-left:auto;align-items:center}
+.nav a{
+  text-decoration:none;font-size:var(--small);font-weight:600;padding:.5rem .8rem;border-radius:999px;
+}
+.nav a:hover{background:var(--corn-40)}
+.nav a[aria-current="page"]{background:var(--corn);box-shadow:2px 2px 0 var(--ink)}
+.nav-toggle{display:none;margin-left:auto;background:var(--corn);border:var(--line);border-radius:12px;padding:.45rem .7rem;cursor:pointer;box-shadow:var(--pop-sm)}
+@media (max-width:1000px){
+  .nav{
+    position:fixed;inset:var(--nav-h) 0 auto 0;flex-direction:column;align-items:stretch;
+    background:var(--paper);border-bottom:var(--line);padding:1rem var(--pad) 1.5rem;gap:.35rem;margin:0;
+  }
+  .nav[hidden]{display:none}
+  .nav a{padding:.75rem 1rem;border:var(--line-thin);background:var(--beige)}
+  .nav-toggle{display:block}
+}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--beige);border-bottom:var(--line);position:relative;overflow:hidden}
+.hero__in{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center;padding-block:clamp(2.5rem,6vw,5rem)}
+@media (max-width:900px){.hero__in{grid-template-columns:1fr}}
+.claim{margin:0 0 1.5rem;font-family:'Yusei Magic';font-size:var(--h1);line-height:1.05}
+.claim span{display:block}
+.claim span:nth-child(2){padding-left:.6em}
+.claim span:nth-child(3){padding-left:1.2em}
+.claim span:nth-child(4){padding-left:1.8em;color:var(--lavender)}
+.hero__art{position:relative;display:flex;justify-content:center}
+.hero__art .remo{width:min(320px,80%)}
+.doodle{position:absolute;stroke:var(--ink);fill:none;stroke-width:1.4;opacity:.55;pointer-events:none}
+
+/* ---------- Contador de entregables ---------- */
+.proof{display:flex;flex-wrap:wrap;gap:.6rem}
+.proof__item{border:var(--line);border-radius:999px;padding:.45rem 1rem;font-size:var(--tiny);font-weight:700;background:var(--paper)}
+
+/* ---------- Secciones ---------- */
+.section-head{max-width:60ch;margin-bottom:2.25rem}
+.rule{height:2px;background:var(--ink);border:0;margin:0 0 2rem}
+
+/* Pasos: SÍ es una secuencia real (los 4 entregables) */
+.steps{counter-reset:s;display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.step{counter-increment:s;border:var(--line);border-radius:var(--r-md);padding:1.4rem;background:var(--paper);position:relative}
+.step::before{
+  content:counter(s);position:absolute;top:-16px;left:1.2rem;
+  width:34px;height:34px;display:grid;place-items:center;border:var(--line);border-radius:50%;
+  background:var(--corn);font-family:'Yusei Magic';font-size:1rem;
+}
+.step h4{margin:.4rem 0 .4rem;font-size:1.05rem}
+.step p{font-size:var(--small);margin:0;color:var(--ink-60)}
+
+/* ---------- Áreas / cursos ---------- */
+.area{display:flex;flex-direction:column;gap:.9rem;border:var(--line);border-radius:var(--r-lg);padding:1.6rem;background:var(--paper);box-shadow:var(--pop-sm)}
+.area__top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.area__ico{width:46px;height:46px;border:var(--line);border-radius:14px;display:grid;place-items:center;flex-shrink:0;font-size:1.3rem}
+.area__meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.5rem}
+.area ul{margin:0;padding-left:1.1rem;font-size:var(--small);color:var(--ink-60)}
+.area li{margin-bottom:.3rem}
+
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:2rem;padding:1rem;border:var(--line);border-radius:var(--r-md);background:var(--beige)}
+.chip{
+  border:var(--line-thin);background:var(--paper);border-radius:999px;padding:.4rem .9rem;
+  font-size:var(--tiny);font-weight:700;cursor:pointer;
+}
+.chip[aria-pressed="true"]{background:var(--corn);box-shadow:2px 2px 0 var(--ink)}
+.filters__label{font-size:var(--tiny);font-weight:700;margin-right:.25rem}
+
+/* ---------- Recursos ---------- */
+.res{display:flex;gap:1rem;border:var(--line);border-radius:var(--r-md);padding:1.1rem;background:var(--paper);align-items:flex-start}
+.res__ico{width:40px;height:40px;border:var(--line-thin);border-radius:10px;display:grid;place-items:center;background:var(--corn-40);flex-shrink:0}
+.res h4{margin:0 0 .25rem;font-size:1rem}
+.res p{font-size:var(--small);margin:0 0 .6rem;color:var(--ink-60)}
+
+/* ---------- Acordeón FAQ ---------- */
+.faq{border:var(--line);border-radius:var(--r-md);overflow:hidden;background:var(--paper)}
+.faq details+details{border-top:var(--line)}
+.faq summary{padding:1.1rem 1.3rem;cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Yusei Magic';font-size:1.4rem;line-height:1}
+.faq details[open] summary{background:var(--corn-20)}
+.faq details[open] summary::after{content:"–"}
+.faq .faq__body{padding:0 1.3rem 1.2rem;font-size:var(--small);color:var(--ink-60)}
+.faq .faq__body p{margin:0}
+
+/* ---------- Formularios ---------- */
+.field{display:block;margin-bottom:1rem}
+.field span{display:block;font-size:var(--tiny);font-weight:700;margin-bottom:.35rem}
+.field input,.field select,.field textarea{
+  width:100%;padding:.7rem .9rem;border:var(--line-thin);border-radius:var(--r-sm);
+  font:inherit;font-size:var(--small);background:var(--paper);
+}
+.field textarea{min-height:130px;resize:vertical}
+.form-note{font-size:var(--tiny);color:var(--ink-60)}
+.row{display:grid;gap:0 1rem;grid-template-columns:1fr 1fr}
+@media (max-width:600px){.row{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+.site-footer{background:var(--ink);color:var(--beige);padding-block:3.5rem 2rem}
+.site-footer a{color:var(--beige);text-decoration:none;font-size:var(--small)}
+.site-footer a:hover{color:var(--corn);text-decoration:underline}
+.site-footer h4{color:var(--corn);font-size:.95rem;margin:0 0 .8rem}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+.foot-bottom{border-top:1px solid #333;margin-top:2.5rem;padding-top:1.25rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;font-size:var(--tiny);color:var(--ink-30)}
+
+/* ---------- Modal ---------- */
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:1rem;background:rgba(20,20,20,.55)}
+.modal[hidden]{display:none}
+.modal__box{background:var(--paper);border:var(--line);border-radius:var(--r-lg);box-shadow:var(--pop);width:min(440px,100%);padding:1.8rem;max-height:90vh;overflow:auto}
+.modal__close{position:absolute;top:1rem;right:1rem;border:var(--line-thin);background:var(--paper);border-radius:50%;width:34px;height:34px;cursor:pointer}
+.tabs{display:flex;gap:.4rem;margin-bottom:1.2rem;border:var(--line-thin);border-radius:999px;padding:.25rem;background:var(--beige)}
+.tabs button{flex:1;border:0;background:transparent;padding:.5rem;border-radius:999px;font-size:var(--small);font-weight:700;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--corn);box-shadow:2px 2px 0 var(--ink)}
+
+/* ---------- Portal ---------- */
+.portal{display:grid;grid-template-columns:264px 1fr;min-height:calc(100vh - var(--nav-h))}
+@media (max-width:900px){.portal{grid-template-columns:1fr}}
+.portal__side{border-right:var(--line);background:var(--beige);padding:1.5rem 1.1rem}
+@media (max-width:900px){.portal__side{border-right:0;border-bottom:var(--line)}}
+.portal__nav{list-style:none;margin:0 0 1.5rem;padding:0;display:grid;gap:.3rem}
+.portal__nav a{
+  display:flex;align-items:center;gap:.6rem;text-decoration:none;padding:.65rem .8rem;
+  border-radius:12px;font-size:var(--small);font-weight:600;border:1.5px solid transparent;
+}
+.portal__nav a:hover{background:var(--corn-40)}
+.portal__nav a[aria-current="page"]{background:var(--corn);border:var(--line-thin);box-shadow:2px 2px 0 var(--ink)}
+.portal__nav .sub{padding-left:2.1rem;font-size:var(--tiny)}
+.portal__main{padding:clamp(1.25rem,4vw,2.5rem);background:var(--paper)}
+.portal__head{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:flex-end;margin-bottom:1.75rem}
+.avatar{width:56px;height:56px;border-radius:50%;border:var(--line);background:var(--corn);display:grid;place-items:center;font-family:'Yusei Magic';font-size:1.3rem}
+.avatar--lg{width:88px;height:88px;font-size:2rem}
+
+.bar{height:14px;border:var(--line-thin);border-radius:999px;background:var(--paper);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--corn);border-right:1.5px solid var(--ink)}
+.bar--lav i{background:var(--lavender)}
+.kpi{border:var(--line);border-radius:var(--r-md);padding:1.2rem;background:var(--beige)}
+.kpi b{font-family:'Yusei Magic';font-size:2rem;display:block;line-height:1}
+.kpi span{font-size:var(--tiny);color:var(--ink-60)}
+
+.check{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.5rem}
+.check li{display:flex;gap:.6rem;align-items:flex-start;font-size:var(--small)}
+.check .box{width:20px;height:20px;border:var(--line-thin);border-radius:6px;flex-shrink:0;display:grid;place-items:center;font-size:.75rem;background:var(--paper)}
+.check .box.on{background:var(--pear)}
+.check .done{color:var(--ink-60);text-decoration:line-through}
+
+.cert{border:var(--line);border-radius:var(--r-md);padding:1.4rem;background:var(--beige);display:flex;flex-direction:column;gap:.8rem}
+.cert__seal{width:52px;height:52px;border:var(--line);border-radius:50%;display:grid;place-items:center;background:var(--corn);font-size:1.4rem}
+.cert-preview{border:var(--line);border-radius:var(--r-md);padding:clamp(1.2rem,4vw,2.5rem);background:var(--paper);text-align:center}
+.cert-preview h3{margin:.5rem 0}
+.cert-preview .name{font-family:'Yusei Magic';font-size:clamp(1.4rem,4vw,2.2rem);border-bottom:var(--line);display:inline-block;padding:0 1rem .3rem;margin:.5rem 0 1rem}
+
+.empty{border:2px dashed var(--ink-30);border-radius:var(--r-md);padding:2.5rem 1.5rem;text-align:center;color:var(--ink-60)}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:200;
+  background:var(--ink);color:var(--corn);padding:.8rem 1.3rem;border-radius:999px;font-size:var(--small);font-weight:700;
+}
+.toast[hidden]{display:none}
+
+/* ---------- Movimiento: una entrada orquestada + respuestas a la acción ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.claim span{animation:rise .55s cubic-bezier(.2,.75,.3,1) both}
+.claim span:nth-child(1){animation-delay:.06s}
+.claim span:nth-child(2){animation-delay:.16s}
+.claim span:nth-child(3){animation-delay:.26s}
+.claim span:nth-child(4){animation-delay:.36s}
+.hero__art{animation:rise .6s .3s cubic-bezier(.2,.75,.3,1) both}
+.modal{animation:fade .16s both}
+.modal__box{animation:pop .24s cubic-bezier(.2,.8,.3,1) both}
+.toast{animation:rise .22s both}
+.bar i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.8,.3,1) both}
+.reveal{animation:pop .3s cubic-bezier(.2,.8,.3,1) both}
+.faq details[open] .faq__body{animation:fade .22s both}
+.price{font-family:'Yusei Magic';font-size:1.9rem;line-height:1;display:block}
+.price small{font-family:'Karla';font-size:.75rem;font-weight:600;color:var(--ink-60);display:block;margin-top:.3rem}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     REMO — aproximación vectorial del isotipo.
+     ⚠️ Reemplazar por el PNG/SVG oficial del manual de marca
+     antes de publicar. Reglas de color de fondo:
+     fondo Corn → Remo Pear · fondo Lavender → Remo Beige
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="remo" viewBox="0 0 200 250">
+    <g stroke="#141414" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path class="remo-body" d="M100 6C52 6 21 42 21 86c0 27 15 45 27 59 9 11 13 18 13 27v11h78v-11c0-9 4-16 13-27 12-14 27-32 27-59C179 42 148 6 100 6Z"/>
+      <path class="remo-body" d="M80 183h40v20H80z"/>
+      <ellipse cx="76" cy="86" rx="27" ry="31" fill="#fff"/>
+      <ellipse cx="128" cy="82" rx="25" ry="29" fill="#fff"/>
+      <ellipse cx="83" cy="92" rx="12" ry="14" fill="#141414" stroke="none"/>
+      <ellipse cx="124" cy="87" rx="11" ry="13" fill="#141414" stroke="none"/>
+      <path d="M92 128c-16 4-26 16-22 26 3 8 14 8 19 0 6-9 5-24 3-33-1-5 6-6 7-1 3 11 6 26 14 32 7 5 16 2 16-6 0-11-13-19-25-20" fill="none" stroke-width="3.5"/>
+      <path d="M72 213h56M70 224h60M74 235h52" stroke-width="3.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ========================== HEADER ========================== -->
+<header class="site-header">
+  <div class="site-header__in">
+    <a class="brand" href="#/inicio" data-link>
+      <svg viewBox="0 0 200 250" class="remo-mark"><use href="#remo"/></svg>
+      <span>
+        <b>Somos Remotamente</b>
+        <span>ACADEMIA VIRTUAL</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menú</button>
+    <nav class="nav" id="mainNav" aria-label="Navegación principal">
+      <a href="#/inicio" data-link>Inicio</a>
+      <a href="#/cursos" data-link>Cursos</a>
+      <a href="#/recursos" data-link>Recursos</a>
+      <a href="#/nosotros" data-link>Sobre nosotros</a>
+      <a href="#/contacto" data-link>Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ========================== INICIO ========================== -->
+<section class="view" id="view-inicio">
+
+  <div class="hero">
+    <div class="wrap hero__in">
+      <div>
+        <p class="tag tag--lav" style="margin-bottom:1rem">Formación asincrónica para Latinoamérica</p>
+        <h1 class="claim">
+          <span>Conecta.</span>
+          <span>Aprende.</span>
+          <span>Actúa.</span>
+          <span>Remotamente.</span>
+        </h1>
+        <p class="lead" style="max-width:52ch">Una academia virtual donde no se aprueba viendo videos: se aprueba entregando trabajo. Cuatro entregables por curso, revisados contra una rúbrica que puedes leer antes de pagar.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin:1.75rem 0">
+          <a href="#/cursos" data-link class="btn btn--corn">Ver los cursos</a>
+          <a href="#/recursos" data-link class="btn btn--ghost">Descargar recursos gratuitos</a>
+        </div>
+        <div class="proof">
+          <span class="proof__item">100% asincrónico</span>
+          <span class="proof__item">Cursos desde US$7</span>
+          <span class="proof__item">Devolución por criterio</span>
+        </div>
+      </div>
+      <div class="hero__art">
+        <svg class="remo" viewBox="0 0 200 250" role="img" aria-label="Remo, la bombilla guía de Somos Remotamente"><use href="#remo"/></svg>
+        <svg class="doodle" style="top:-10px;right:0;width:120px" viewBox="0 0 120 120"><path d="M8 96c22-40 44 6 62-18C86 56 60 34 76 20c12-10 30 4 34 22"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cómo funciona: SÍ es una secuencia real -->
+  <div class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cómo se aprueba un curso</h2>
+        <p class="muted">El mismo recorrido en todos los programas. Sabes qué se te va a pedir antes de empezar.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h4>Entras cuando puedes</h4><p>El curso vive en Google Classroom y el contenido está completo desde el primer día. Sin clases en vivo ni horarios fijos.</p></div>
+        <div class="step"><h4>Trabajas sobre tu caso</h4><p>Cada módulo termina en algo que construyes con tus datos reales, no con un ejemplo genérico.</p></div>
+        <div class="step"><h4>Entregas cuatro piezas</h4><p>Cada una se revisa contra la rúbrica publicada y recibes la devolución con el criterio que falta cubrir.</p></div>
+        <div class="step"><h4>Cierras con el examen</h4><p>Una evaluación final de quince preguntas, corregida al instante. Con eso y los cuatro entregables se emite tu certificado.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Áreas -->
+  <div class="band band--beige">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Seis áreas formativas</h2>
+        <p class="muted">La academia se organiza por áreas, no por cursos sueltos. Dentro de cada área los programas se suman y se actualizan.</p>
+      </div>
+      <div class="grid g-3" id="homeAreas"></div>
+      <p style="margin-top:2rem"><a href="#/cursos" data-link class="btn btn--ink">Ver el catálogo completo</a></p>
+    </div>
+  </div>
+
+  <!-- Diferencial -->
+  <div class="band band--ink">
+    <div class="wrap">
+      <div class="grid g-2" style="gap:2.5rem;align-items:center">
+        <div>
+          <h2>Un certificado que dice qué hiciste</h2>
+          <p>La mayoría de los certificados online solo confirman que alguien vio un video hasta el final. El nuestro lista por nombre los cuatro entregables que completaste y el criterio con el que se evaluaron.</p>
+          <p>Eso lo vuelve útil donde importa: en una entrevista, en una propuesta a un cliente, en un perfil profesional.</p>
+          <a href="#/nosotros" data-link class="btn btn--corn">Cómo evaluamos</a>
+        </div>
+        <div class="cert-preview" style="background:var(--beige);color:var(--ink)">
+          <svg style="width:54px;margin:0 auto" viewBox="0 0 200 250"><use href="#remo"/></svg>
+          <p class="tag" style="margin:.75rem 0 0">Certificado de aprobación</p>
+          <span class="name">Tu nombre</span>
+          <p style="font-size:var(--tiny);margin:0;color:var(--ink-60)">Entregables evaluados y aprobados:<br>1 · 2 · 3 · 4 — listados por nombre</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recursos + comunidad -->
+  <div class="band">
+    <div class="wrap grid g-2" style="gap:2rem">
+      <div class="card card--corn">
+        <h3>Biblioteca abierta</h3>
+        <p>Guías, plantillas y checklists descargables sin costo. Son piezas de trabajo, no adelantos de venta.</p>
+        <a href="#/recursos" data-link class="btn">Ir a la biblioteca</a>
+      </div>
+      <div class="card card--lav">
+        <h3>Devolución por criterio</h3>
+        <p>Entregas y recibes el resultado criterio por criterio: qué quedó cubierto y qué falta corregir antes de volver a entregar.</p>
+        <a href="#/nosotros" data-link class="btn">Cómo funciona la revisión</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="band band--beige">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cómo te inscribes</h2>
+        <p class="muted">Tres pasos. El acceso no es instantáneo: lo activamos a mano, y por eso nos comprometemos con un plazo.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h4>Eliges el curso</h4><p>Completas un formulario corto con tu nombre, tu correo y el curso que quieres.</p></div>
+        <div class="step"><h4>Haces el pago</h4><p>Te respondemos con los datos para pagar y nos envías el comprobante.</p></div>
+        <div class="step"><h4>Recibes el acceso</h4><p>Te matriculamos en Google Classroom y te llega el código de clase en menos de 24 horas.</p></div>
+      </div>
+      <p style="margin-top:2rem"><a class="btn btn--corn" data-cta href="#">Empezar mi inscripción</a></p>
+    </div>
+  </div>
+
+  <div class="band band--corn">
+    <div class="wrap center">
+      <h2 style="max-width:22ch;margin-inline:auto">Empieza por donde estés, no por donde deberías estar</h2>
+      <p class="muted" style="margin-inline:auto;max-width:52ch">Explora las áreas, revisa los criterios de evaluación y elige el programa que resuelve tu próximo paso.</p>
+      <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem">
+        <a href="#/cursos" data-link class="btn btn--ink">Ver áreas de formación</a>
+        <a class="btn" data-cta href="#">Inscribirme</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== CURSOS ========================== -->
+<section class="view" id="view-cursos" hidden>
+  <div class="band band--beige" style="border-bottom:var(--line)">
+    <div class="wrap">
+      <h1 style="margin-bottom:.3rem">Catálogo</h1>
+      <p class="lead" style="max-width:60ch">Seis áreas formativas, entre US$7 y US$9 por programa. Se compra una vez y el acceso no vence. Todos comparten la misma estructura: contenido asincrónico, cuatro entregables con rúbrica publicada y un examen final.</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filtros del catálogo">
+        <span class="filters__label">Área</span>
+        <div id="filterAreas" style="display:flex;flex-wrap:wrap;gap:.5rem"></div>
+        <span class="filters__label" style="margin-left:1rem">Nivel</span>
+        <div id="filterNiveles" style="display:flex;flex-wrap:wrap;gap:.5rem"></div>
+        <button class="btn btn--sm btn--ghost" id="clearFilters" style="margin-left:auto">Limpiar filtros</button>
+      </div>
+      <p class="muted" id="catalogCount" style="font-size:var(--small)"></p>
+      <div class="grid" id="catalogGrid" style="margin-top:1rem;grid-template-columns:repeat(auto-fit,minmax(360px,1fr))"></div>
+    </div>
+  </div>
+
+  <div class="band band--beige">
+    <div class="wrap">
+      <h2>Lo que incluye cualquier programa</h2>
+      <div class="grid g-4" style="margin-top:1.5rem">
+        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Modalidad</h4><p class="muted" style="font-size:var(--small);margin:0">Asincrónica, en Google Classroom. Sin horarios fijos ni cupos.</p></div>
+        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Duración</h4><p class="muted" style="font-size:var(--small);margin:0">Estimada por carga de trabajo, no por tiempo de video.</p></div>
+        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Evaluación</h4><p class="muted" style="font-size:var(--small);margin:0">Cuatro entregables revisados contra la rúbrica y un examen final de quince preguntas.</p></div>
+        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Certificación</h4><p class="muted" style="font-size:var(--small);margin:0">Constancia de participación o certificado de aprobación con los entregables listados.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== RECURSOS ========================== -->
+<section class="view" id="view-recursos" hidden>
+  <div class="band band--corn" style="border-bottom:var(--line)">
+    <div class="wrap">
+      <h1 style="margin-bottom:.3rem">Biblioteca</h1>
+      <p class="lead" style="max-width:60ch">Material descargable de uso libre: plantillas que se rellenan, checklists que se tachan y guías que se aplican el mismo día.</p>
+    </div>
+  </div>
+  <div class="band">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filtros de la biblioteca">
+        <span class="filters__label">Tipo</span>
+        <div id="filterTipos" style="display:flex;flex-wrap:wrap;gap:.5rem"></div>
+      </div>
+      <div class="grid g-2" id="resourceGrid"></div>
+    </div>
+  </div>
+  <div class="band band--beige">
+    <div class="wrap card" style="background:var(--paper)">
+      <h3>Recibe el material nuevo</h3>
+      <p class="muted">Un correo cuando se publica una guía o plantilla nueva. Nada más.</p>
+      <form class="row" data-form="newsletter" style="align-items:end;max-width:640px">
+        <label class="field"><span>Correo</span><input type="email" required placeholder="tucorreo@ejemplo.com"></label>
+        <div class="field"><button class="btn btn--corn btn--block" type="submit">Suscribirme</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== SOBRE NOSOTROS ========================== -->
+<section class="view" id="view-nosotros" hidden>
+  <div class="band band--beige" style="border-bottom:var(--line)">
+    <div class="wrap">
+      <h1 style="margin-bottom:.3rem">Sobre nosotros</h1>
+      <p class="lead" style="max-width:62ch">Somos Remotamente es una academia virtual asincrónica de habilidades digitales y trabajo remoto para Latinoamérica. No tenemos sede: el aula es el archivo, el foro y el entregable.</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap grid g-2" style="gap:2.5rem">
+      <div>
+        <h2>Por qué existimos</h2>
+        <p>La pregunta que más se repite no es "¿qué curso hago?" sino "¿por dónde empiezo?". Hay talento suficiente y estructura insuficiente: formación práctica, criterios claros y un camino que no dependa de vivir en la ciudad correcta.</p>
+        <p>La academia nació de esa necesidad concreta y se organiza alrededor de una decisión: si al terminar no tienes algo hecho en las manos, el curso no cumplió su trabajo.</p>
+      </div>
+      <div class="stack">
+        <div class="card card--beige"><h3>Misión</h3><p class="muted" style="margin:0">Acompañar el desarrollo de profesionales autónomos y versátiles para que accedan con confianza a oportunidades laborales reales en entornos digitales.</p></div>
+        <div class="card card--beige"><h3>Visión</h3><p class="muted" style="margin:0">Ser una referencia regional en formación para el trabajo remoto, reconocida por el impacto de lo que sus estudiantes son capaces de producir.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band band--ink">
+    <div class="wrap">
+      <h2>Nuestra metodología</h2>
+      <p style="max-width:60ch">Cuatro entregables por curso, revisados contra criterios que se publican antes de la inscripción. Es lo que diferencia un certificado que informa de uno que solo confirma asistencia.</p>
+      <p style="max-width:60ch">La evaluación tiene dos partes. Los cuatro entregables los revisamos nosotros contra los criterios de la rúbrica, uno por uno, y te devolvemos el detalle de qué quedó cubierto y qué falta. Si no alcanza, corriges y vuelves a entregar. El plazo de devolución es de cinco días hábiles como máximo.</p>
+      <p style="max-width:60ch">Al cerrar el programa respondes un examen final de quince preguntas de selección simple, corregido al instante contra la clave del curso. Se aprueba con el 70% y se repite las veces que haga falta, con preguntas y opciones barajadas en cada intento. Ninguna de las dos instancias tiene costo adicional ni límite de intentos.</p>
+      <div class="grid g-2" style="margin-top:2rem">
+        <div class="card" style="background:#1f1f1f;color:var(--beige);border-color:var(--corn)">
+          <h3 style="color:var(--corn)">Constancia de participación</h3>
+          <p style="margin:0;font-size:var(--small)">Acredita que recorriste el contenido completo del programa. No requiere entregables ni examen.</p>
+        </div>
+        <div class="card" style="background:#1f1f1f;color:var(--beige);border-color:var(--corn)">
+          <h3 style="color:var(--corn)">Certificado de aprobación</h3>
+          <p style="margin:0;font-size:var(--small)">Requiere los cuatro entregables aprobados y el examen final superado. Detalla al reverso cada entregable y los criterios con los que fue revisado.</p>
+        </div>
+      </div>
+      <p style="font-size:var(--small);color:var(--ink-30);margin-top:1.5rem;max-width:70ch">Somos Remotamente emite formación propia. Nuestros programas están alineados con competencias demandadas en el mercado del trabajo remoto y preparan para aplicarlas; no constituyen una titulación oficial ni una acreditación estatal.</p>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="wrap">
+      <h2>Valores</h2>
+      <div class="grid g-3" style="margin-top:1.5rem">
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Empoderamiento</h4><p class="muted" style="font-size:var(--small);margin:0">Enseñamos a decidir, no a depender de un tutorial siguiente.</p></div>
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Excelencia</h4><p class="muted" style="font-size:var(--small);margin:0">El contenido se revisa y se actualiza cuando la realidad cambia.</p></div>
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Transparencia</h4><p class="muted" style="font-size:var(--small);margin:0">Criterios, alcances y límites, escritos antes de que pagues.</p></div>
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Adaptabilidad</h4><p class="muted" style="font-size:var(--small);margin:0">Formatos que se sostienen con conexión intermitente y poco tiempo.</p></div>
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Comunidad</h4><p class="muted" style="font-size:var(--small);margin:0">Aprender acompañado sostiene lo que la motivación sola no sostiene.</p></div>
+        <div class="card card--flat card--beige"><h4 style="margin-top:0">Aplicación</h4><p class="muted" style="font-size:var(--small);margin:0">Toda lección termina en algo que se puede mostrar.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="band band--corn">
+    <div class="wrap grid g-2" style="align-items:center;gap:2rem">
+      <div class="hero__art"><svg style="width:min(200px,60%)" viewBox="0 0 200 250"><use href="#remo" class="remo--pear"/></svg></div>
+      <div>
+        <h2>Remo</h2>
+        <p>Remo es el guía de la academia: una bombilla curiosa que acompaña el recorrido. El cuerpo representa las ideas, los ojos la cercanía, el filamento el camino del aprendizaje y la base el enchufe con el mercado laboral.</p>
+        <p class="muted" style="font-size:var(--small)">Aparece en el onboarding, en los correos, en la plataforma y en cada devolución. Nunca aprendes a ciegas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== CONTACTO ========================== -->
+<section class="view" id="view-contacto" hidden>
+  <div class="band">
+    <div class="wrap grid g-2" style="gap:2.5rem;align-items:start">
+      <div>
+        <h1>Contacto</h1>
+        <p class="lead">Escribe con el detalle que puedas: mientras más contexto, más útil la respuesta.</p>
+        <div class="card" style="margin-top:1.5rem">
+          <div class="row">
+            <label class="field"><span>Nombre</span><input required placeholder="Nombre y apellido"></label>
+            <label class="field"><span>Correo</span><input type="email" required placeholder="tucorreo@ejemplo.com"></label>
+          </div>
+          <div class="row">
+            <label class="field"><span>País</span><input placeholder="Ej. Colombia"></label>
+            <label class="field"><span>Motivo</span>
+              <select>
+                <option>Consulta sobre un área formativa</option>
+                <option>Inscripción y pagos</option>
+                <option>Certificados</option>
+                <option>Alianzas institucionales</option>
+                <option>Soporte técnico</option>
+                <option>Otro</option>
+              </select>
+            </label>
+          </div>
+          <label class="field"><span>Mensaje</span><textarea required placeholder="Cuéntanos en qué punto estás y qué necesitas resolver."></textarea></label>
+          <a class="btn btn--corn" data-contacto href="#">Escribirnos por correo</a>
+          <p class="form-note" style="margin-top:.75rem">Se abrirá tu aplicación de correo con el mensaje listo para enviar. Respondemos en días hábiles.</p>
+        </div>
+      </div>
+      <aside class="stack">
+        <div class="card card--corn">
+          <h3>Canales</h3>
+          <p style="font-size:var(--small);margin:0">Correo: hola@somosremotamente.com<br>Instagram: @somosremotamente<br>Atención asincrónica, en español. Respondemos en días hábiles.</p>
+        </div>
+        <div class="card card--beige">
+          <h3>¿Quieres inscribirte?</h3>
+          <p style="font-size:var(--small);margin:0 0 .8rem">Para comprar un curso no uses este formulario: hay uno específico de inscripción.</p>
+          <a class="btn btn--sm btn--corn" data-cta href="#">Ir a inscripción</a>
+        </div>
+        <div class="card card--beige">
+          <h3>Alianzas</h3>
+          <p style="font-size:var(--small);margin:0">Trabajamos con fundaciones, universidades y plataformas de empleo como socio de implementación de contenido. Escribe indicando "Alianzas" en el motivo.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="band band--beige">
+    <div class="wrap">
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq" style="margin-top:1.5rem">
+        <details open><summary>¿Los cursos tienen horarios o fechas de inicio?</summary><div class="faq__body"><p>No. Todo es asincrónico: el contenido queda disponible desde que te inscribes y avanzas a tu ritmo, sin sesiones obligatorias.</p></div></details>
+        <details><summary>¿Qué diferencia hay entre la constancia y el certificado?</summary><div class="faq__body"><p>La constancia de participación acredita que recorriste el contenido. El certificado de aprobación requiere el examen final superado y los cuatro entregables aprobados, y los detalla al reverso junto a los criterios con los que fue revisado cada uno.</p></div></details>
+        <details><summary>¿Puedo ver los criterios de evaluación antes de inscribirme?</summary><div class="faq__body"><p>Sí. Cada programa publica su rúbrica en la ficha del curso, antes del pago.</p></div></details>
+        <details><summary>¿Desde qué países puedo estudiar?</summary><div class="faq__body"><p>Desde cualquiera. El contenido está en español y pensado para el contexto latinoamericano, incluyendo conexión intermitente y estudio en horarios partidos.</p></div></details>
+        <details><summary>¿Quién revisa mis entregables?</summary><div class="faq__body"><p>El examen final se corrige solo, contra una clave fija de respuestas, así que ves tu nota al terminar. Los entregables los revisamos nosotros contra los criterios de la rúbrica publicada, con un plazo máximo de cinco días hábiles.</p></div></details>
+        <details><summary>¿Qué pasa si no apruebo un entregable?</summary><div class="faq__body"><p>Recibes el detalle de qué criterio no quedó cubierto y puedes volver a entregarlo. No hay límite de intentos ni de tiempo, y no cuesta nada reintentar.</p></div></details>
+        <details><summary>¿Los certificados sirven como título oficial?</summary><div class="faq__body"><p>No. Son certificados propios de la academia. Documentan formación y entregables concretos, y están alineados con competencias del mercado remoto, pero no equivalen a una titulación oficial.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========================== FOOTER ========================== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="grid g-4" style="gap:2rem">
+      <div>
+        <svg style="width:46px;margin-bottom:.75rem"><use href="#remo" class="remo--corn"/></svg>
+        <p style="font-family:'Yusei Magic';font-size:1.1rem;margin:0 0 .4rem;color:var(--corn)">Somos Remotamente</p>
+        <p style="font-size:var(--small);color:var(--ink-30);margin:0">Conecta. Aprende. Actúa. Remotamente.</p>
+      </div>
+      <div>
+        <h4>Academia</h4>
+        <ul>
+          <li><a href="#/cursos" data-link>Catálogo</a></li>
+          <li><a href="#/recursos" data-link>Biblioteca</a></li>
+          <li><a href="#/nosotros" data-link>Metodología</a></li>
+          <li><a href="#/contacto" data-link>Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Inscripción</h4>
+        <ul>
+          <li><a data-cta href="#">Formulario de inscripción</a></li>
+          <li><a href="#/cursos" data-link>Precios</a></li>
+          <li><a href="#/contacto" data-link>Contacto y soporte</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#/contacto" data-link>Términos y condiciones</a></li>
+          <li><a href="#/contacto" data-link>Política de privacidad</a></li>
+          <li><a href="#/contacto" data-link>Alianzas institucionales</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Somos Remotamente · Academia virtual asincrónica</span>
+      <span>Formación propia. No constituye titulación oficial.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SOMOS REMOTAMENTE — sitio público
+   Estático: sin backend, sin cuentas, sin almacenamiento.
+   El acceso al curso ocurre en Google Classroom, fuera de aquí.
+   ============================================================ */
+
+/* ⚠️ ÚNICO DATO QUE DEBES CAMBIAR AL CREAR EL FORMULARIO ⚠️
+   Pega aquí el enlace de tu Google Form de inscripción.
+   Todos los botones de compra de la web apuntan a esta constante. */
+const FORM_INSCRIPCION = 'https://forms.gle/PEGA-AQUI-TU-FORMULARIO';
+
+/* Correo al que llega el formulario de contacto */
+const CORREO = 'hola@somosremotamente.com';
+
+/* ---------- CATÁLOGO POR ÁREAS ---------- */
+const AREAS = [
+  {
+    id:'carrera', precio:9, ico:'🧭', nivel:'Inicial', duracion:'4–6 semanas',
+    nombre:'Carrera remota y empleabilidad',
+    resumen:'Cómo se busca, se postula y se consigue trabajo remoto desde Latinoamérica, con criterios reales de selección.',
+    competencias:['Lectura de vacantes y filtrado de oportunidades','Perfil profesional y portafolio digital','Postulación y entrevista asincrónica','Primeros 90 días en un equipo distribuido'],
+    entregables:['Perfil profesional revisado','Portafolio con un caso propio','Carta de postulación adaptada a una vacante real','Plan de tus primeras cuatro semanas']
+  },
+  {
+    id:'asistencia', precio:9, ico:'🗂️', nivel:'Inicial', duracion:'5–7 semanas',
+    nombre:'Oficios digitales y asistencia virtual',
+    resumen:'Los servicios que sostienen a un equipo remoto: agenda, documentación, coordinación y soporte operativo.',
+    competencias:['Gestión de agendas y bandejas de entrada','Documentación y bases de conocimiento','Coordinación de tareas y seguimiento','Soporte operativo a equipos distribuidos'],
+    entregables:['Sistema de gestión de agenda documentado','Manual de procedimiento de un proceso real','Tablero de seguimiento de tareas','Informe de coordinación semanal']
+  },
+  {
+    id:'productividad', precio:7, ico:'⏱️', nivel:'Inicial', duracion:'3–5 semanas',
+    nombre:'Productividad y gestión del tiempo',
+    resumen:'Sistemas de trabajo que se sostienen con conexión intermitente, horarios partidos y varias responsabilidades a la vez.',
+    competencias:['Diseño de un sistema personal de tareas','Bloques de enfoque y trabajo profundo','Gestión de la carga y del desborde','Herramientas de organización compartida'],
+    entregables:['Diagnóstico de tu semana real','Sistema de tareas configurado','Rutina de enfoque documentada','Revisión semanal con métricas propias']
+  },
+  {
+    id:'clientes', precio:9, ico:'💬', nivel:'Intermedio', duracion:'4–6 semanas',
+    nombre:'Ventas y atención al cliente online',
+    resumen:'Conversaciones comerciales y de soporte por escrito: cómo responder, cómo escalar y dónde está el límite.',
+    competencias:['Atención asincrónica por chat y correo','Manejo de reclamos y situaciones difíciles','Proceso comercial de principio a fin','Métricas de satisfacción y seguimiento'],
+    entregables:['Guion de respuestas para casos frecuentes','Resolución documentada de un reclamo','Propuesta comercial escrita','Panel de métricas de atención']
+  },
+  {
+    id:'finanzas', precio:7, ico:'💵', nivel:'Intermedio', duracion:'4–5 semanas',
+    nombre:'Finanzas básicas y cobros desde Latinoamérica',
+    resumen:'Cómo se cotiza, se factura y se cobra trabajo remoto desde la región, y qué preguntas hay que llevarle a un contador.',
+    competencias:['Estructura de costos y cotización','Métodos de cobro internacional','Registro y control de ingresos','Preparación de la conversación fiscal'],
+    entregables:['Estructura de costos de tu servicio','Cotización formal para un caso real','Plantilla de registro de ingresos','Checklist de preguntas para tu asesor'],
+    nota:'Este contenido es formativo y general. No sustituye asesoría contable o legal en tu país.'
+  },
+  {
+    id:'profesional', precio:7, ico:'🧠', nivel:'Intermedio', duracion:'4–6 semanas',
+    nombre:'Desarrollo profesional y habilidades blandas',
+    resumen:'Comunicación escrita, colaboración asincrónica y criterio profesional: lo que separa a quien ejecuta de quien coordina.',
+    competencias:['Escritura clara para equipos remotos','Comunicación asincrónica y actualizaciones','Retroalimentación y acuerdos de trabajo','Autonomía y criterio en la toma de decisiones'],
+    entregables:['Actualización de proyecto escrita','Documento de acuerdos de equipo','Devolución estructurada a un par','Caso resuelto con decisiones justificadas']
+  }
+];
+
+const RECURSOS = [
+  {tipo:'Guía', ico:'📘', titulo:'Primeros pasos en el trabajo remoto', desc:'Qué mirar antes de postular a una vacante remota y cómo leer lo que no dice el anuncio.', peso:'PDF · 18 páginas', url:'#'},
+  {tipo:'Plantilla', ico:'📄', titulo:'Perfil profesional para búsqueda remota', desc:'Estructura editable con las secciones que sí se leen en una revisión de dos minutos.', peso:'Documento editable', url:'#'},
+  {tipo:'Checklist', ico:'✅', titulo:'Antes de enviar una postulación', desc:'Doce verificaciones que evitan los descartes más comunes por forma y no por perfil.', peso:'PDF · 2 páginas', url:'#'},
+  {tipo:'Plantilla', ico:'📊', titulo:'Registro de ingresos freelance', desc:'Hoja de cálculo para llevar cobros, retenciones y saldos por cliente y por mes.', peso:'Hoja de cálculo', url:'#'},
+  {tipo:'Guía', ico:'📗', titulo:'Escribir para equipos asincrónicos', desc:'Cómo redactar actualizaciones que no necesitan una reunión para entenderse.', peso:'PDF · 14 páginas', url:'#'},
+  {tipo:'Prompt', ico:'⌨️', titulo:'Prompts para revisar tu propio trabajo', desc:'Instrucciones para usar asistentes de IA como revisor crítico, no como redactor.', peso:'Texto · 9 prompts', url:'#'},
+  {tipo:'Checklist', ico:'🗓️', titulo:'Tus primeros treinta días en un equipo remoto', desc:'Qué preguntar, qué documentar y qué entregar en el primer mes.', peso:'PDF · 3 páginas', url:'#'},
+  {tipo:'Herramienta', ico:'🧮', titulo:'Calculadora de tarifa por hora', desc:'Punto de partida para pasar de costos a tarifa, con espacio para tus propios supuestos.', peso:'Hoja de cálculo', url:'#'}
+];
+
+const area = id => AREAS.find(a=>a.id===id);
+const $  = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- Tarjeta de área ---------- */
+function areaCard(a,{compact=false}={}){
+  return `<article class="area">
+    <div class="area__top">
+      <div><h3 style="margin:0 0 .35rem">${esc(a.nombre)}</h3><p class="muted" style="font-size:var(--small);margin:0">${esc(a.resumen)}</p></div>
+      <div class="area__ico" aria-hidden="true">${a.ico}</div>
+    </div>
+    ${compact?'':`
+      <div>
+        <strong style="font-size:var(--tiny)">Qué vas a poder hacer</strong>
+        <ul style="margin-top:.4rem">${a.competencias.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <strong style="font-size:var(--tiny)">Los cuatro entregables</strong>
+        <ol style="margin:.4rem 0 0;padding-left:1.1rem;font-size:var(--small);color:var(--ink-60)">${a.entregables.map(e=>`<li>${esc(e)}</li>`).join('')}</ol>
+      </div>
+      ${a.nota?`<p style="font-size:var(--tiny);color:var(--ink-60);border-left:3px solid var(--lavender);padding-left:.7rem;margin:0">${esc(a.nota)}</p>`:''}`}
+    <div class="area__meta">
+      <span class="tag tag--corn">${esc(a.nivel)}</span>
+      <span class="tag">${esc(a.duracion)}</span>
+      <span class="tag tag--lav">Asincrónico</span>
+    </div>
+    ${compact?`<p style="margin:.4rem 0 0"><span class="price">US$${a.precio}</span><small>Pago único · acceso sin vencimiento</small></p>`:`
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem">
+        <span class="price">US$${a.precio}<small>Pago único · acceso sin vencimiento</small></span>
+        <a class="btn btn--corn" data-cta data-curso="${esc(a.nombre)}" href="#">Empezar por US$${a.precio}</a>
+      </div>`}
+  </article>`;
+}
+
+function renderHome(){
+  $('#homeAreas').innerHTML = AREAS.map(a=>areaCard(a,{compact:true})).join('');
+  enlazarCTAs();
+}
+
+/* ---------- Catálogo con filtros ---------- */
+const filtro = {area:'todas', nivel:'todos'};
+function renderFilters(){
+  $('#filterAreas').innerHTML = ['todas',...AREAS.map(a=>a.id)]
+    .map(id=>`<button class="chip" data-f="area" data-v="${id}" aria-pressed="${filtro.area===id}">${id==='todas'?'Todas':esc(area(id).nombre)}</button>`).join('');
+  $('#filterNiveles').innerHTML = ['todos','Inicial','Intermedio']
+    .map(n=>`<button class="chip" data-f="nivel" data-v="${n}" aria-pressed="${filtro.nivel===n}">${n==='todos'?'Todos':n}</button>`).join('');
+}
+function renderCatalog(){
+  const list = AREAS.filter(a=>(filtro.area==='todas'||a.id===filtro.area)&&(filtro.nivel==='todos'||a.nivel===filtro.nivel));
+  $('#catalogCount').textContent = list.length===1?'1 curso':`${list.length} cursos`;
+  $('#catalogGrid').innerHTML = list.length
+    ? list.map(a=>areaCard(a)).join('')
+    : `<div class="empty">Ningún curso coincide con esos filtros. Prueba quitando el nivel.</div>`;
+  renderFilters();
+  enlazarCTAs();
+}
+
+/* ---------- Biblioteca ---------- */
+let tipoActivo='Todos';
+function renderResources(){
+  const tipos=['Todos',...new Set(RECURSOS.map(r=>r.tipo))];
+  $('#filterTipos').innerHTML = tipos.map(t=>`<button class="chip" data-tipo="${t}" aria-pressed="${tipoActivo===t}">${t}</button>`).join('');
+  const list = RECURSOS.filter(r=>tipoActivo==='Todos'||r.tipo===tipoActivo);
+  $('#resourceGrid').innerHTML = list.map(r=>`
+    <article class="res">
+      <div class="res__ico" aria-hidden="true">${r.ico}</div>
+      <div style="flex:1">
+        <span class="tag tag--lav" style="margin-bottom:.4rem">${esc(r.tipo)}</span>
+        <h4>${esc(r.titulo)}</h4>
+        <p>${esc(r.desc)}</p>
+        <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap">
+          <a class="btn btn--sm" href="${r.url}" ${r.url==='#'?'':'target="_blank" rel="noopener"'}>Descargar</a>
+          <span style="font-size:var(--tiny);color:var(--ink-60)">${esc(r.peso)}</span>
+        </div>
+      </div>
+    </article>`).join('');
+}
+
+/* ---------- Enlaces al formulario de inscripción ----------
+   Cada botón de compra abre el mismo Google Form. Si el curso
+   está identificado, se envía como parámetro para que el
+   formulario llegue con el curso ya seleccionado. */
+function enlazarCTAs(){
+  $$('[data-cta]').forEach(a=>{
+    const curso=a.dataset.curso;
+    let url=FORM_INSCRIPCION;
+    if(curso && /\/viewform/.test(url)){
+      /* Para prellenar: en tu Form usa "Obtener enlace prellenado",
+         copia el identificador entry.XXXXXXX y ponlo aquí. */
+      // url += (url.includes('?')?'&':'?') + 'usp=pp_url&entry.123456789=' + encodeURIComponent(curso);
+    }
+    a.href=url;
+    a.target='_blank';
+    a.rel='noopener';
+  });
+}
+
+/* ---------- Contacto por correo ---------- */
+function enlazarContacto(){
+  const b=$('[data-contacto]'); if(!b) return;
+  b.addEventListener('click',e=>{
+    e.preventDefault();
+    const card=b.closest('.card');
+    const [nombre,correo,pais]=$$('input',card).map(i=>i.value.trim());
+    const motivo=$('select',card)?.value||'';
+    const msg=$('textarea',card)?.value.trim()||'';
+    const asunto=`[${motivo}] Consulta de ${nombre||'la web'}`;
+    const cuerpo=`Nombre: ${nombre}\nCorreo: ${correo}\nPaís: ${pais}\nMotivo: ${motivo}\n\n${msg}`;
+    location.href=`mailto:${CORREO}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+  });
+}
+
+/* ---------- ROUTER ---------- */
+const VISTAS=['inicio','cursos','recursos','nosotros','contacto'];
+function route(){
+  const hash=(location.hash.replace(/^#\/?/,'').split('/')[0])||'inicio';
+  const v=VISTAS.includes(hash)?hash:'inicio';
+
+  $$('.view').forEach(x=>x.hidden=true);
+  $('#view-'+v).hidden=false;
+
+  if(v==='inicio') renderHome();
+  if(v==='cursos') renderCatalog();
+  if(v==='recursos') renderResources();
+  enlazarCTAs();
+
+  $$('.nav a[data-link]').forEach(a=>{
+    if(a.getAttribute('href')==='#/'+v) a.setAttribute('aria-current','page');
+    else a.removeAttribute('aria-current');
+  });
+
+  if(window.innerWidth<=1000){
+    $('#mainNav').hidden=true;
+    $('#navToggle').setAttribute('aria-expanded','false');
+  }
+  window.scrollTo({top:0,behavior:'instant'});
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- LISTENERS ---------- */
+document.addEventListener('click',e=>{
+  const chipF=e.target.closest('[data-f]');
+  if(chipF){ filtro[chipF.dataset.f]=chipF.dataset.v; renderCatalog(); return; }
+  const chipT=e.target.closest('[data-tipo]');
+  if(chipT){ tipoActivo=chipT.dataset.tipo; renderResources(); return; }
+  if(e.target.closest('#clearFilters')){ filtro.area='todas'; filtro.nivel='todos'; renderCatalog(); return; }
+  if(e.target.closest('#navToggle')){
+    const nav=$('#mainNav'), abrir=nav.hidden;
+    nav.hidden=!abrir;
+    $('#navToggle').setAttribute('aria-expanded',String(abrir));
+  }
+});
+
+document.addEventListener('submit',e=>{
+  const f=e.target.closest('[data-form]'); if(!f) return;
+  e.preventDefault();
+  if(f.dataset.form==='newsletter'){
+    alert('Para activar la suscripción, conecta este campo a tu formulario o a tu herramienta de correo.');
+  }
+});
+
+/* ---------- INIT ---------- */
+$('#year').textContent=new Date().getFullYear();
+enlazarContacto();
+if(!location.hash) location.hash='#/inicio';
+route();
+</script>
+
+<style>
+/* Reglas de color de Remo según el fondo (manual de marca) */
+.remo-body{fill:var(--corn)}
+.remo--pear .remo-body{fill:var(--pear)}
+.remo--beige .remo-body{fill:var(--beige)}
+.remo--corn .remo-body{fill:var(--corn)}
+</style>
+</body>
+</html>
