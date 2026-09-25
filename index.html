@@ -37,6 +37,7 @@
   --line-thin:1.5px solid var(--ink);
   --pop:6px 6px 0 var(--ink);
   --pop-sm:4px 4px 0 var(--ink);
+  --pop-md:7px 7px 0 var(--ink);
   --r-lg:26px;
   --r-md:18px;
   --r-sm:12px;
@@ -168,7 +169,7 @@ button{font:inherit;color:inherit}
 .claim span{display:block}
 .claim span:nth-child(2){padding-left:.6em}
 .claim span:nth-child(3){padding-left:1.2em}
-.claim span:nth-child(4){padding-left:1.8em;color:var(--lavender-txt)}
+.claim span:nth-child(4){padding-left:1.8em;color:var(--lavender)}
 .hero__art{position:relative;display:flex;justify-content:center}
 .hero__art .remo{width:min(320px,80%)}
 .doodle{position:absolute;stroke:var(--ink);fill:none;stroke-width:1.4;opacity:.55;pointer-events:none}
@@ -193,7 +194,7 @@ button{font:inherit;color:inherit}
 .step p{font-size:var(--small);margin:0;color:var(--ink-60)}
 
 /* ---------- Áreas / cursos ---------- */
-.area{display:flex;flex-direction:column;gap:.9rem;border:var(--line);border-radius:var(--r-lg);padding:1.6rem;background:var(--paper);box-shadow:var(--pop-sm)}
+.area{display:flex;flex-direction:column;gap:.9rem;will-change:transform;border:var(--line);border-radius:var(--r-lg);padding:1.6rem;background:var(--paper);box-shadow:var(--pop-sm)}
 .area__top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
 .area__ico{width:46px;height:46px;border:var(--line);border-radius:14px;display:grid;place-items:center;flex-shrink:0;font-size:1.3rem}
 .area__meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.5rem}
@@ -303,6 +304,25 @@ button{font:inherit;color:inherit}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ---------- Aparición al bajar ---------- */
+.reveal{opacity:0;transform:translateY(16px)}
+.reveal.visible{opacity:1;transform:none;transition:opacity .5s cubic-bezier(.2,.75,.3,1),transform .5s cubic-bezier(.2,.75,.3,1)}
+.reveal.visible:nth-child(2){transition-delay:.06s}
+.reveal.visible:nth-child(3){transition-delay:.12s}
+.reveal.visible:nth-child(4){transition-delay:.18s}
+.reveal.visible:nth-child(5){transition-delay:.24s}
+.reveal.visible:nth-child(6){transition-delay:.30s}
+
+/* ---------- Reposo y hover ---------- */
+.area,.res{transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s ease}
+.area:hover,.res:hover{transform:translateY(-3px);box-shadow:var(--pop-md)}
+.chip{transition:background-color .15s ease,color .15s ease,transform .15s ease}
+.chip:hover{transform:translateY(-1px)}
+.faq summary{transition:background-color .15s ease}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary::after{transition:transform .2s cubic-bezier(.2,.75,.3,1);display:inline-block}
+.view:not([hidden]){animation:fade .28s ease both}
 .claim span{animation:rise .55s cubic-bezier(.2,.75,.3,1) both}
 .claim span:nth-child(1){animation-delay:.06s}
 .claim span:nth-child(2){animation-delay:.16s}
@@ -373,7 +393,6 @@ button{font:inherit;color:inherit}
         </div>
         <div class="proof">
           <span class="proof__item">100% asincrónico</span>
-          <span class="proof__item">18 cursos · US$5 cada uno</span>
           <span class="proof__item">Acceso sin vencimiento</span>
         </div>
       </div>
@@ -418,7 +437,7 @@ button{font:inherit;color:inherit}
       <div class="grid g-2" style="gap:2.5rem;align-items:center">
         <div>
           <h2>Un certificado que dice qué hiciste</h2>
-          <p>La mayoría de los certificados online solo confirman que alguien vio un video hasta el final. El nuestro detalla los módulos que cursaste y el resultado del examen que presentaste.</p>
+          <p>La mayoría de los certificados online solo confirman que alguien llegó al final del contenido. El nuestro detalla los módulos que cursaste y el resultado del examen que presentaste.</p>
           <p>Eso lo vuelve útil donde importa: en una entrevista, en una propuesta a un cliente, en un perfil profesional.</p>
           <a href="#/nosotros" data-link class="btn btn--corn">Cómo evaluamos</a>
         </div>
@@ -503,7 +522,7 @@ button{font:inherit;color:inherit}
       <h2>Lo que incluye cualquier programa</h2>
       <div class="grid g-4" style="margin-top:1.5rem">
         <div class="card card--flat"><h4 style="margin:0 0 .3rem">Modalidad</h4><p class="muted" style="font-size:var(--small);margin:0">Asincrónica, en Google Classroom. Sin horarios fijos ni cupos.</p></div>
-        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Duración</h4><p class="muted" style="font-size:var(--small);margin:0">Estimada por carga de trabajo, no por tiempo de video.</p></div>
+        <div class="card card--flat"><h4 style="margin:0 0 .3rem">Ritmo</h4><p class="muted" style="font-size:var(--small);margin:0">El que tú marques. El material está completo desde el primer día.</p></div>
         <div class="card card--flat"><h4 style="margin:0 0 .3rem">Evaluación</h4><p class="muted" style="font-size:var(--small);margin:0">Un examen final de quince preguntas. Se aprueba con el 70% y se repite sin límite.</p></div>
         <div class="card card--flat"><h4 style="margin:0 0 .3rem">Certificación</h4><p class="muted" style="font-size:var(--small);margin:0">Constancia de participación, o certificado de aprobación al superar el examen.</p></div>
       </div>
@@ -531,18 +550,19 @@ button{font:inherit;color:inherit}
   <div class="band band--beige">
     <div class="wrap card" style="background:var(--paper)">
       <h3>Recibe el material nuevo</h3>
-      <p class="muted">Un correo cuando se publica una guía o plantilla nueva. Nada más.</p>
+      <p class="muted">Un correo cuando se publica una guía o plantilla nueva. Nada más, y te puedes dar de baja respondiendo al correo.</p>
       <form class="row" data-form="newsletter" style="align-items:end;max-width:640px">
-        <label class="field"><span>Correo</span><input type="email" required placeholder="tucorreo@ejemplo.com"></label>
+        <label class="field"><span>Correo</span><input type="email" name="correo" required placeholder="tucorreo@ejemplo.com"></label>
         <div class="field"><button class="btn btn--corn btn--block" type="submit">Suscribirme</button></div>
       </form>
+      <p class="muted" style="font-size:var(--tiny);margin:.9rem 0 0">Se abre tu correo con el mensaje escrito. Solo tienes que enviarlo.</p>
     </div>
   </div>
 </section>
 
 <!-- ========================== SOBRE NOSOTROS ========================== -->
 <section class="view" id="view-nosotros" hidden>
-  <div class="band band--beige" style="border-bottom:var(--line)">
+  <div class="band band--corn" style="border-bottom:var(--line)">
     <div class="wrap">
       <h1 style="margin-bottom:.3rem">Sobre nosotros</h1>
       <p class="lead" style="max-width:62ch">Somos Remotamente es una academia virtual asincrónica de habilidades digitales y trabajo remoto para Latinoamérica. No tenemos sede: el aula es el material, el recurso descargable y el examen.</p>
@@ -642,7 +662,7 @@ button{font:inherit;color:inherit}
       <aside class="stack">
         <div class="card card--corn">
           <h3>Canales</h3>
-          <p style="font-size:var(--small);margin:0">Correo: hola@somosremotamente.com<br>Instagram: @somosremotamente<br>Atención asincrónica, en español. Respondemos en días hábiles.</p>
+          <p style="font-size:var(--small);margin:0">Correo: somosremotamente@gmail.com<br>Instagram: @somosremotamente<br>Atención asincrónica, en español. Respondemos en días hábiles.</p>
         </div>
         <div class="card card--beige">
           <h3>¿Quieres inscribirte?</h3>
@@ -657,7 +677,7 @@ button{font:inherit;color:inherit}
     </div>
   </div>
 
-  <div class="band band--beige">
+  <div class="band band--beige" id="faq" style="scroll-margin-top:90px">
     <div class="wrap">
       <h2>Preguntas frecuentes</h2>
       <div class="faq" style="margin-top:1.5rem">
@@ -691,14 +711,14 @@ button{font:inherit;color:inherit}
           <li><a href="#/cursos" data-link>Catálogo</a></li>
           <li><a href="#/recursos" data-link>Biblioteca</a></li>
           <li><a href="#/nosotros" data-link>Metodología</a></li>
-          <li><a href="#/contacto" data-link>Preguntas frecuentes</a></li>
+          <li><a href="#/contacto/faq" data-link>Preguntas frecuentes</a></li>
         </ul>
       </div>
       <div>
         <h4>Inscripción</h4>
         <ul>
           <li><a data-cta href="#">Formulario de inscripción</a></li>
-          <li><a href="#/cursos" data-link>Precios</a></li>
+          <li><a href="#/cursos" data-link>Precios y catálogo</a></li>
           <li><a href="#/contacto" data-link>Contacto y soporte</a></li>
         </ul>
       </div>
@@ -731,7 +751,7 @@ button{font:inherit;color:inherit}
 const FORM_INSCRIPCION = 'https://forms.gle/gXWmgZsn9DAAvcRk6';
 
 /* Correo al que llega el formulario de contacto */
-const CORREO = 'hola@somosremotamente.com';
+const CORREO = 'somosremotamente@gmail.com';
 
 /* ---------- CATÁLOGO POR ÁREAS ---------- */
 const PRECIO = 5;
@@ -1089,7 +1109,7 @@ function areaTeaser(a){
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
       <span class="price">US$${PRECIO}<small>por curso · pago único</small></span>
-      <a class="btn btn--ghost" data-link href="#/cursos?area=${a.id}">Ver el área</a>
+      <a class="btn btn--ghost" data-link href="#/cursos?area=${a.id}">Ver ${plural(lista.length,'este curso','estos cursos')}</a>
     </div>
   </article>`;
 }
@@ -1117,8 +1137,8 @@ function cursoCard(c){
     ${c.nota?`<p style="font-size:var(--tiny);color:var(--ink-60);border-left:3px solid var(--lavender);padding-left:.7rem;margin:0">${esc(c.nota)}</p>`:''}
     <div class="area__meta">
       <span class="tag tag--corn">${esc(c.nivel)}</span>
-      <span class="tag">${esc(c.duracion)}</span>
       <span class="tag tag--lav">Asincrónico</span>
+      <span class="tag">A tu ritmo</span>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
       <span class="price">US$${PRECIO}<small>Pago único · acceso sin vencimiento</small></span>
@@ -1130,6 +1150,7 @@ function cursoCard(c){
 function renderHome(){
   $('#homeAreas').innerHTML = AREAS.map(areaTeaser).join('');
   enlazarCTAs();
+  animarEntradas();
 }
 
 /* ---------- Catálogo con filtros ---------- */
@@ -1148,6 +1169,7 @@ function renderCatalog(){
     : `<div class="empty">Ningún curso coincide con esos filtros. Prueba quitando el nivel.</div>`;
   renderFilters();
   enlazarCTAs();
+  animarEntradas();
 }
 
 /* ---------- Biblioteca ---------- */
@@ -1210,7 +1232,9 @@ const VISTAS=['inicio','cursos','recursos','nosotros','contacto'];
 function route(){
   const bruto=location.hash.replace(/^#\/?/,'');
   const [ruta,query]=bruto.split('?');
-  const hash=(ruta.split('/')[0])||'inicio';
+  const partes=ruta.split('/');
+  const hash=partes[0]||'inicio';
+  const seccion=partes[1]||'';
   const v=VISTAS.includes(hash)?hash:'inicio';
 
   $$('.view').forEach(x=>x.hidden=true);
@@ -1235,12 +1259,32 @@ function route(){
     $('#mainNav').hidden=true;
     $('#navToggle').setAttribute('aria-expanded','false');
   }
-  window.scrollTo({top:0,behavior:'instant'});
+  animarEntradas();
+
+  const destino = seccion ? document.getElementById(seccion) : null;
+  if(destino){
+    destino.scrollIntoView({block:'start'});
+  }else{
+    window.scrollTo(0,0);
+  }
 }
 window.addEventListener('hashchange',route);
 
 /* ---------- LISTENERS ---------- */
 document.addEventListener('click',e=>{
+  /* El pie repite destinos que ya pueden estar abiertos ("Catálogo" estando en
+     Cursos, "Preguntas frecuentes" estando en Contacto). Sin esto el hash no
+     cambia, hashchange no se dispara y el clic no hace absolutamente nada. */
+  const enlace=e.target.closest('a[data-link]');
+  if(enlace){
+    const destino=enlace.getAttribute('href')||'';
+    if(destino.startsWith('#')){
+      e.preventDefault();
+      if(location.hash===destino) route();
+      else location.hash=destino;
+      return;
+    }
+  }
   const chipF=e.target.closest('[data-f]');
   if(chipF){ filtro[chipF.dataset.f]=chipF.dataset.v; renderCatalog(); return; }
   const chipT=e.target.closest('[data-tipo]');
@@ -1257,9 +1301,39 @@ document.addEventListener('submit',e=>{
   const f=e.target.closest('[data-form]'); if(!f) return;
   e.preventDefault();
   if(f.dataset.form==='newsletter'){
-    alert('Para activar la suscripción, conecta este campo a tu formulario o a tu herramienta de correo.');
+    const correo=$('input[name="correo"]',f)?.value.trim()||'';
+    const cuerpo=`Hola, quiero recibir un aviso cuando publiquen material nuevo.\n\nMi correo: ${correo}`;
+    location.href=`mailto:${CORREO}?subject=${encodeURIComponent('Avísenme del material nuevo')}&body=${encodeURIComponent(cuerpo)}`;
+    f.reset();
   }
 });
+
+/* ---------- Aparición al bajar ---------- */
+const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let observador = null;
+if(!sinMovimiento && 'IntersectionObserver' in window){
+  observador = new IntersectionObserver((entradas)=>{
+    entradas.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); observador.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+}
+function animarEntradas(){
+  const vista=$$('.view').find(v=>!v.hidden);
+  if(!vista) return;
+  const objetivos=$$('.area, .res, .card, .section-head, .faq', vista);
+  /* Sin observador (navegador viejo o movimiento reducido) nada se oculta:
+     más vale una página sin animación que una página en blanco. */
+  if(!observador){ objetivos.forEach(el=>el.classList.add('visible')); return; }
+  objetivos.forEach(el=>{
+    if(el.classList.contains('visible')) return;
+    el.classList.add('reveal');
+    observador.observe(el);
+  });
+  /* Red de seguridad: si algo no llegó a dispararse, se muestra igual. */
+  clearTimeout(animarEntradas._t);
+  animarEntradas._t = setTimeout(()=>objetivos.forEach(el=>el.classList.add('visible')), 2500);
+}
 
 /* ---------- INIT ---------- */
 $('#year').textContent=new Date().getFullYear();
