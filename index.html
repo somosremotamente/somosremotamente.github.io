@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Somos Remotamente · Academia virtual de formación digital</title>
 <meta name="description" content="Academia virtual asincrónica de habilidades digitales y trabajo remoto para Latinoamérica. Dieciocho cursos a US$5: módulos asincrónicos, recursos descargables y un examen final.">
@@ -52,6 +53,12 @@
   --pad:clamp(1.25rem,5vw,4rem);
   --max:1200px;
   --nav-h:76px;
+
+  /* Los emoji necesitan su propia fuente. Si no se nombra, el navegador
+     escoge la que quiera y en Windows suele salir el juego en blanco y
+     negro. Va al final de cada pila: solo se usa para los glifos que
+     Karla y Yusei Magic no tienen, o sea, los emoji. */
+  --emoji:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Twemoji Mozilla','EmojiOne Color','Android Emoji';
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -62,14 +69,14 @@ html{scroll-behavior:smooth}
 }
 body{
   margin:0;
-  font-family:'Karla',system-ui,sans-serif;
+  font-family:'Karla',system-ui,var(--emoji),sans-serif;
   font-size:var(--body);
   line-height:1.65;
   color:var(--ink);
   background:var(--paper);
   -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3,h4,.font-display{font-family:'Yusei Magic',system-ui,sans-serif;font-weight:400;line-height:1.12;letter-spacing:-.01em}
+h1,h2,h3,h4,.font-display{font-family:'Yusei Magic',system-ui,var(--emoji),sans-serif;font-weight:400;line-height:1.12;letter-spacing:-.01em}
 h1{font-size:var(--h1);margin:0 0 .5em}
 h2{font-size:var(--h2);margin:0 0 .6em}
 h3{font-size:var(--h3);margin:0 0 .5em}
@@ -196,7 +203,7 @@ button{font:inherit;color:inherit}
 /* ---------- Áreas / cursos ---------- */
 .area{display:flex;flex-direction:column;gap:.9rem;will-change:transform;border:var(--line);border-radius:var(--r-lg);padding:1.6rem;background:var(--paper);box-shadow:var(--pop-sm)}
 .area__top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
-.area__ico{width:46px;height:46px;border:var(--line);border-radius:14px;display:grid;place-items:center;flex-shrink:0;font-size:1.3rem}
+.area__ico{width:46px;height:46px;border:var(--line);border-radius:14px;display:grid;place-items:center;flex-shrink:0;font-size:1.45rem;line-height:1;font-family:var(--emoji),system-ui,sans-serif}
 .area__meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.5rem}
 .area ul{margin:0;padding-left:1.1rem;font-size:var(--small);color:var(--ink-60)}
 .area li{margin-bottom:.3rem}
@@ -211,7 +218,7 @@ button{font:inherit;color:inherit}
 
 /* ---------- Recursos ---------- */
 .res{display:flex;gap:1rem;border:var(--line);border-radius:var(--r-md);padding:1.1rem;background:var(--paper);align-items:flex-start}
-.res__ico{width:40px;height:40px;border:var(--line-thin);border-radius:10px;display:grid;place-items:center;background:var(--corn-40);flex-shrink:0}
+.res__ico{width:40px;height:40px;border:var(--line-thin);border-radius:10px;display:grid;place-items:center;background:var(--corn-40);flex-shrink:0;font-size:1.25rem;line-height:1;font-family:var(--emoji),system-ui,sans-serif}
 .res h4{margin:0 0 .25rem;font-size:1rem}
 .res p{font-size:var(--small);margin:0 0 .6rem;color:var(--ink-60)}
 
@@ -325,7 +332,9 @@ button{font:inherit;color:inherit}
 .area:hover,.res:hover{transform:translateY(-3px);box-shadow:var(--pop-md)}
 /* El icono del curso reacciona con la tarjeta, para que el conjunto
    se sienta como una sola pieza y no como un rectángulo que se mueve. */
-.area__ico{display:inline-block;transition:transform .24s cubic-bezier(.2,.9,.3,1.3)}
+/* Sin `display` aquí: lo pondría por encima del `grid` de la caja y el
+   emoji dejaría de estar centrado. Un elemento grid se transforma igual. */
+.area__ico{transition:transform .24s cubic-bezier(.2,.9,.3,1.3)}
 .area:hover .area__ico{transform:rotate(-8deg) scale(1.14)}
 .area:hover .btn--corn{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
 .chip{transition:background-color .15s ease,color .15s ease,transform .15s ease,box-shadow .15s ease}
@@ -1360,16 +1369,25 @@ function animarEntradas(){
   const porFila=new Map();
   objetivos.forEach(el=>{
     if(el.classList.contains('visible')) return;
+    /* Solo se esconde lo que está por debajo de la pantalla. Al recargar,
+       el navegador devuelve la página a la altura donde estabas, y lo que
+       queda por encima ya nunca vuelve a entrar en el campo de visión: si
+       lo escondiéramos, esa parte se quedaría en blanco esperando a la red
+       de seguridad. Lo que ya se ve, se ve; se anima lo que está por venir. */
+    if(el.getBoundingClientRect().top < innerHeight*0.95){
+      el.classList.add('visible');
+      return;
+    }
     const fila=el.parentElement;
     const n=porFila.get(fila)||0;
     porFila.set(fila,n+1);
-    el.style.setProperty('--i', Math.min(n,5));
+    el.style.setProperty('--i', String(Math.min(n,5)));
     el.classList.add('reveal');
     observador.observe(el);
   });
   /* Red de seguridad: si algo no llegó a dispararse, se muestra igual. */
   clearTimeout(animarEntradas._t);
-  animarEntradas._t = setTimeout(()=>objetivos.forEach(el=>el.classList.add('visible')), 2500);
+  animarEntradas._t = setTimeout(()=>objetivos.forEach(el=>el.classList.add('visible')), 1500);
 }
 
 /* ---------- Barra de lectura ---------- */
