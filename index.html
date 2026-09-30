@@ -463,10 +463,10 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="section-head">
         <h2>Elige por dónde empezar</h2>
-        <p class="muted">La academia se organiza por áreas formativas. Cada curso se compra por separado, cuesta US$5 y el acceso no vence.</p>
+        <p class="muted">No hace falta que tengas clara la meta para dar el primer paso. Mira dónde está hoy tu pregunta y empieza por ahí: cada curso se sostiene solo, y siempre puedes cambiar de rumbo después.</p>
       </div>
       <div class="grid g-3" id="homeAreas"></div>
-      <p style="margin-top:2rem"><a href="#/cursos" data-link class="btn btn--ink">Ver el catálogo completo</a></p>
+      <p style="margin-top:2rem"><a href="#/cursos" data-link class="btn btn--ink">Ver todos los cursos</a></p>
     </div>
   </div>
 
@@ -537,8 +537,8 @@ button{font:inherit;color:inherit}
 <section class="view" id="view-cursos" hidden>
   <div class="band band--beige" style="border-bottom:var(--line)">
     <div class="wrap">
-      <h1 style="margin-bottom:.3rem">Catálogo</h1>
-      <p class="lead" style="max-width:62ch">Cursos independientes, repartidos en varias áreas formativas. <strong>Todos cuestan US$5</strong>, se compran por separado y el acceso no vence. Comparten la misma estructura: ocho módulos asincrónicos, recursos descargables y un examen final de 15 preguntas.</p>
+      <h1 style="margin-bottom:.3rem">Los cursos</h1>
+      <p class="lead" style="max-width:62ch">Todos están hechos igual: ocho módulos que avanzas a tu ritmo, y materiales para tener al lado mientras trabajas. Empieza por el que te resuelva algo esta semana; el resto va a seguir aquí cuando lo necesites.</p>
     </div>
   </div>
 
@@ -695,13 +695,13 @@ button{font:inherit;color:inherit}
           </div>
           <label class="field"><span>Mensaje</span><textarea required placeholder="Cuéntanos en qué punto estás y qué necesitas resolver."></textarea></label>
           <a class="btn btn--corn" data-contacto href="#">Escribirnos por correo</a>
-          <p class="form-note" style="margin-top:.75rem">Se abrirá tu aplicación de correo con el mensaje listo para enviar. Respondemos en días hábiles.</p>
+          <p class="form-note" style="margin-top:.75rem">Se abrirá tu aplicación de correo con el mensaje listo para enviar. Respondemos de lunes a viernes, de 8:00 a 17:00 (UTC−4).</p>
         </div>
       </div>
       <aside class="stack">
         <div class="card card--corn">
           <h3>Canales</h3>
-          <p style="font-size:var(--small);margin:0">Correo: somosremotamente@gmail.com<br>Instagram: @somosremotamente<br>Atención asincrónica, en español. Respondemos en días hábiles.</p>
+          <p style="font-size:var(--small);margin:0">Correo: somosremotamente@gmail.com<br>Instagram: @somosremotamente<br>Atención asincrónica, en español. Respondemos de lunes a viernes, de 8:00 a 17:00 (UTC−4).</p>
         </div>
         <div class="card card--beige">
           <h3>¿Quieres inscribirte?</h3>
@@ -725,7 +725,7 @@ button{font:inherit;color:inherit}
         <details><summary>¿Qué diferencia hay entre la constancia y el certificado?</summary><div class="faq__body"><p>La constancia de participación acredita que recorriste el contenido del programa. El certificado de aprobación requiere además haber superado el examen final, y detalla al reverso los módulos cursados y el resultado obtenido.</p></div></details>
         <details><summary>¿Sé qué me van a preguntar antes de inscribirme?</summary><div class="faq__body"><p>Sí. La ficha de cada curso publica los módulos que lo componen, y el examen final se limita a ese contenido. No hay preguntas sorpresa fuera del temario.</p></div></details>
         <details><summary>¿Desde qué países puedo estudiar?</summary><div class="faq__body"><p>Desde cualquiera. El contenido está en español y pensado para el contexto latinoamericano, incluyendo conexión intermitente y estudio en horarios partidos.</p></div></details>
-        <details><summary>¿Cómo se corrige el examen?</summary><div class="faq__body"><p>Se corrige solo, contra una clave fija de respuestas, así que ves tu nota al terminar. Te muestra qué preguntas fallaste para que sepas a qué módulo volver, pero no las respuestas correctas.</p></div></details>
+        <details><summary>¿Cómo se corrige el examen?</summary><div class="faq__body"><p>Se corrige contra una clave fija de respuestas, así que ves tu nota al terminar. Además, una persona experta del equipo audita las correcciones. Te muestra qué preguntas fallaste para que sepas a qué módulo volver, pero no las respuestas correctas.</p></div></details>
         <details><summary>¿Qué pasa si no apruebo el examen?</summary><div class="faq__body"><p>Puedes repetirlo las veces que necesites, sin límite de tiempo y sin costo. Cada intento te dice qué preguntas fallaste para que repases ese módulo antes de volver a intentarlo.</p></div></details>
         <details><summary>¿Los certificados sirven como título oficial?</summary><div class="faq__body"><p>No. Son certificados propios de la academia. Documentan la formación cursada y el examen superado, y están alineados con competencias del mercado remoto, pero no equivalen a una titulación oficial.</p></div></details>
       </div>
@@ -747,7 +747,7 @@ button{font:inherit;color:inherit}
       <div>
         <h4>Academia</h4>
         <ul>
-          <li><a href="#/cursos" data-link>Catálogo</a></li>
+          <li><a href="#/cursos" data-link>Los cursos</a></li>
           <li><a href="#/recursos" data-link>Biblioteca</a></li>
           <li><a href="#/nosotros" data-link>Metodología</a></li>
           <li><a href="#/contacto/faq" data-link>Preguntas frecuentes</a></li>
@@ -828,9 +828,10 @@ const CURSOS = [
       'Reconocer señales de estafa antes de entregar tus datos'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantilla de perfil, checklist de postulación y guía antiestafas',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -844,9 +845,10 @@ const CURSOS = [
       'Llegar al tercer mes con resultados demostrables'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plan de 30-60-90 días y plantillas de actualización semanal',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -860,9 +862,10 @@ const CURSOS = [
       'Publicar con constancia sin que se vuelva un segundo empleo'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Estructura de portafolio y guía de perfil para LinkedIn',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
 
@@ -878,9 +881,10 @@ const CURSOS = [
       'Proteger el tiempo de quien diriges sin volverte un cuello de botella'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantillas de agenda, procedimientos y seguimiento de tareas',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -894,9 +898,10 @@ const CURSOS = [
       'Conducir entrevistas estructuradas por videollamada'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantillas de perfil, guion de entrevista y matriz de evaluación',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -910,9 +915,10 @@ const CURSOS = [
       'Automatizar cálculos recurrentes sin romper la hoja'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Hojas de práctica y plantillas de reporte listas para copiar',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -926,9 +932,10 @@ const CURSOS = [
       'Exportar en el formato correcto para cada destino'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Sistema de plantillas y guía rápida de errores frecuentes',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
 
@@ -944,9 +951,10 @@ const CURSOS = [
       'Cerrar un proyecto dejando documentación utilizable'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantillas de plan, tablero y acta de decisiones',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -960,9 +968,10 @@ const CURSOS = [
       'Decidir qué tareas conviene no delegar'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Biblioteca de prompts de trabajo y checklist de revisión',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ],
     nota:'El curso enseña criterio de uso, no promete reemplazar tu trabajo con IA.'
   },
@@ -977,9 +986,10 @@ const CURSOS = [
       'Documentar el flujo para que no dependa solo de ti'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Recetas de automatización paso a paso y plantilla de documentación',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
 
@@ -995,9 +1005,10 @@ const CURSOS = [
       'Manejar objeciones y dar seguimiento sin resultar insistente'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Secuencias de contacto, guion de descubrimiento y plantilla de propuesta',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -1011,9 +1022,10 @@ const CURSOS = [
       'Usar métricas de satisfacción para mejorar la respuesta'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Guiones de respuesta, plantillas de disculpa y árbol de escalamiento',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -1027,9 +1039,10 @@ const CURSOS = [
       'Evitar promesas que después no se puedan sostener'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Fórmulas de estructura, banco de ejemplos y checklist de revisión',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -1043,9 +1056,10 @@ const CURSOS = [
       'Leer métricas y decidir qué repetir y qué dejar de hacer'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Calendario editable, banco de formatos y plantilla de reporte mensual',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
 
@@ -1061,9 +1075,10 @@ const CURSOS = [
       'Preparar las preguntas correctas para tu contador'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Registro de ingresos, calculadora de tarifa y checklist para tu contador',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ],
     nota:'Este contenido es formativo y general. No sustituye asesoría contable o legal en tu país.'
   },
@@ -1078,9 +1093,10 @@ const CURSOS = [
       'Sostener la relación para que el cliente repita'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantillas de propuesta, acuerdo de trabajo y cierre de proyecto',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
 
@@ -1096,9 +1112,10 @@ const CURSOS = [
       'Ajustar tono y extensión según el canal'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Plantillas de actualización, solicitud y acta de decisión',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ]
   },
   {
@@ -1112,9 +1129,10 @@ const CURSOS = [
       'Pedir aclaraciones sin quedar fuera de la conversación'
     ],
     incluye:[
-      '8 módulos en PDF, disponibles desde el primer día',
+      'Ocho módulos, disponibles desde el primer día',
       'Banco de frases de trabajo, plantillas de correo y glosario remoto',
-      'Examen final de 15 preguntas, con reintentos sin límite'
+      'Una caja de herramientas por tema, con enlaces marcados según sean gratuitos o de pago',
+      'Acceso sin vencimiento y certificado al aprobar'
     ],
     nota:'Requiere inglés básico previo. No es un curso de inglés desde cero.'
   }
@@ -1151,9 +1169,8 @@ function areaTeaser(a){
       <strong style="font-size:var(--tiny)">${plural(lista.length,'curso','cursos')} en esta área</strong>
       <ul style="margin-top:.4rem">${lista.map(c=>`<li>${esc(c.nombre)}</li>`).join('')}</ul>
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
-      <span class="price">US$${PRECIO}<small>por curso · pago único</small></span>
-      <a class="btn btn--ghost" data-link href="#/cursos?area=${a.id}">Ver ${plural(lista.length,'este curso','estos cursos')}</a>
+    <div style="border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
+      <a class="btn btn--ghost btn--block" data-link href="#/cursos?area=${a.id}">Ver ${plural(lista.length,'este curso','estos cursos')}</a>
     </div>
   </article>`;
 }
@@ -1171,11 +1188,11 @@ function cursoCard(c){
       <div class="area__ico" aria-hidden="true">${c.ico}</div>
     </div>
     <div>
-      <strong style="font-size:var(--tiny)">Qué vas a poder hacer</strong>
+      <strong style="font-size:var(--tiny)">¿Qué vas a poder hacer?</strong>
       <ul style="margin-top:.4rem">${c.competencias.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     </div>
     <div>
-      <strong style="font-size:var(--tiny)">Qué incluye</strong>
+      <strong style="font-size:var(--tiny)">¿Qué incluye?</strong>
       <ul style="margin-top:.4rem">${c.incluye.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     </div>
     ${c.nota?`<p style="font-size:var(--tiny);color:var(--ink-60);border-left:3px solid var(--lavender);padding-left:.7rem;margin:0">${esc(c.nota)}</p>`:''}
@@ -1186,7 +1203,7 @@ function cursoCard(c){
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
       <span class="price">US$${PRECIO}<small>Pago único · acceso sin vencimiento</small></span>
-      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar por US$${PRECIO}</a>
+      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar este curso</a>
     </div>
   </article>`;
 }
