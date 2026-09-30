@@ -304,21 +304,35 @@ button{font:inherit;color:inherit}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}
 @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes flotar{from{transform:translateY(0)}to{transform:translateY(-9px)}}
+@keyframes sello{0%{transform:scale(1)}45%{transform:scale(1.12) rotate(-3deg)}100%{transform:scale(1)}}
 
-/* ---------- Aparición al bajar ---------- */
-.reveal{opacity:0;transform:translateY(16px)}
-.reveal.visible{opacity:1;transform:none;transition:opacity .5s cubic-bezier(.2,.75,.3,1),transform .5s cubic-bezier(.2,.75,.3,1)}
-.reveal.visible:nth-child(2){transition-delay:.06s}
-.reveal.visible:nth-child(3){transition-delay:.12s}
-.reveal.visible:nth-child(4){transition-delay:.18s}
-.reveal.visible:nth-child(5){transition-delay:.24s}
-.reveal.visible:nth-child(6){transition-delay:.30s}
+/* ---------- Aparición al bajar ----------
+   El elemento espera oculto y entra cuando el observador lo alcanza.
+   Importante: aquí NO puede haber una `animation`, porque se dispararía
+   al cargar la página y lo de más abajo llegaría ya animado al hacer
+   scroll, que es justo lo que se quiere evitar. El retardo va por --i,
+   que pone el JS según la posición dentro de su fila. */
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.visible{
+  opacity:1;transform:none;
+  transition:opacity .5s cubic-bezier(.2,.75,.3,1),transform .5s cubic-bezier(.2,.75,.3,1);
+  transition-delay:calc(var(--i,0) * 70ms);
+}
 
 /* ---------- Reposo y hover ---------- */
 .area,.res{transition:transform .18s cubic-bezier(.2,.75,.3,1),box-shadow .18s ease}
 .area:hover,.res:hover{transform:translateY(-3px);box-shadow:var(--pop-md)}
-.chip{transition:background-color .15s ease,color .15s ease,transform .15s ease}
-.chip:hover{transform:translateY(-1px)}
+/* El icono del curso reacciona con la tarjeta, para que el conjunto
+   se sienta como una sola pieza y no como un rectángulo que se mueve. */
+.area__ico{display:inline-block;transition:transform .24s cubic-bezier(.2,.9,.3,1.3)}
+.area:hover .area__ico{transform:rotate(-8deg) scale(1.14)}
+.area:hover .btn--corn{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.chip{transition:background-color .15s ease,color .15s ease,transform .15s ease,box-shadow .15s ease}
+.chip:hover{transform:translateY(-1px);box-shadow:2px 2px 0 var(--ink)}
+.chip[aria-pressed="true"]{animation:sello .3s cubic-bezier(.2,.8,.3,1)}
+.nav a{transition:background-color .16s ease,transform .16s cubic-bezier(.2,.75,.3,1),box-shadow .16s ease}
+.nav a:hover{transform:translateY(-1px);box-shadow:2px 2px 0 var(--ink)}
 .faq summary{transition:background-color .15s ease}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq summary::after{transition:transform .2s cubic-bezier(.2,.75,.3,1);display:inline-block}
@@ -329,12 +343,22 @@ button{font:inherit;color:inherit}
 .claim span:nth-child(3){animation-delay:.26s}
 .claim span:nth-child(4){animation-delay:.36s}
 .hero__art{animation:rise .6s .3s cubic-bezier(.2,.75,.3,1) both}
+/* La ilustración respira despacio una vez ha entrado. Va en el hijo para
+   no pisar la animación de entrada del contenedor. */
+.hero__art .remo{animation:flotar 4.2s 1.1s ease-in-out infinite alternate}
 .modal{animation:fade .16s both}
 .modal__box{animation:pop .24s cubic-bezier(.2,.8,.3,1) both}
 .toast{animation:rise .22s both}
 .bar i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.8,.3,1) both}
-.reveal{animation:pop .3s cubic-bezier(.2,.8,.3,1) both}
 .faq details[open] .faq__body{animation:fade .22s both}
+
+/* ---------- Barra de lectura ---------- */
+.progreso{
+  position:fixed;top:0;left:0;right:0;height:4px;z-index:300;pointer-events:none;
+  background:var(--lavender);transform:scaleX(0);transform-origin:left;
+}
+@media (prefers-reduced-motion:reduce){ .progreso{display:none} }
+
 .price{font-family:'Yusei Magic';font-size:1.9rem;line-height:1;display:block}
 .price small{font-family:'Karla';font-size:.75rem;font-weight:600;color:var(--ink-60);display:block;margin-top:.3rem}
 </style>
@@ -748,7 +772,12 @@ button{font:inherit;color:inherit}
 /* ⚠️ ÚNICO DATO QUE DEBES CAMBIAR AL CREAR EL FORMULARIO ⚠️
    Pega aquí el enlace de tu Google Form de inscripción.
    Todos los botones de compra de la web apuntan a esta constante. */
-const FORM_INSCRIPCION = 'https://forms.gle/gXWmgZsn9DAAvcRk6';
+const FORM_INSCRIPCION = 'https://docs.google.com/forms/d/e/1FAIpQLSeMmiGSRvmgohWrIUzlrGNoCDW_0vhRQVxvi7OxQZeTaTYv0w/viewform';
+
+/* Identificador interno de la pregunta «Curso» del formulario.
+   Es de respuesta corta: el enlace la llega escribiendo, así que
+   añadir cursos nuevos no obliga a tocar el formulario. */
+const FORM_ENTRY_CURSO = 'entry.785805326';
 
 /* Correo al que llega el formulario de contacto */
 const CORREO = 'somosremotamente@gmail.com';
@@ -1201,10 +1230,11 @@ function enlazarCTAs(){
   $$('[data-cta]').forEach(a=>{
     const curso=a.dataset.curso;
     let url=FORM_INSCRIPCION;
-    if(curso && /\/viewform/.test(url)){
-      /* Para prellenar: en tu Form usa "Obtener enlace prellenado",
-         copia el identificador entry.XXXXXXX y ponlo aquí. */
-      // url += (url.includes('?')?'&':'?') + 'usp=pp_url&entry.123456789=' + encodeURIComponent(curso);
+    if(curso){
+      /* El nombre tiene que coincidir exactamente con el del catálogo,
+         porque es el texto que queda escrito en la hoja de respuestas. */
+      url += (url.includes('?')?'&':'?') + 'usp=pp_url&'
+           + FORM_ENTRY_CURSO + '=' + encodeURIComponent(curso);
     }
     a.href=url;
     a.target='_blank';
@@ -1325,14 +1355,36 @@ function animarEntradas(){
   /* Sin observador (navegador viejo o movimiento reducido) nada se oculta:
      más vale una página sin animación que una página en blanco. */
   if(!observador){ objetivos.forEach(el=>el.classList.add('visible')); return; }
+  /* El retardo se reparte por posición dentro de su propia fila, con tope:
+     una rejilla de 18 cursos no puede tardar 18 pasos en aparecer. */
+  const porFila=new Map();
   objetivos.forEach(el=>{
     if(el.classList.contains('visible')) return;
+    const fila=el.parentElement;
+    const n=porFila.get(fila)||0;
+    porFila.set(fila,n+1);
+    el.style.setProperty('--i', Math.min(n,5));
     el.classList.add('reveal');
     observador.observe(el);
   });
   /* Red de seguridad: si algo no llegó a dispararse, se muestra igual. */
   clearTimeout(animarEntradas._t);
   animarEntradas._t = setTimeout(()=>objetivos.forEach(el=>el.classList.add('visible')), 2500);
+}
+
+/* ---------- Barra de lectura ---------- */
+if(!sinMovimiento){
+  const barra=document.createElement('div');
+  barra.className='progreso';
+  document.body.appendChild(barra);
+  const pintar=()=>{
+    const h=document.documentElement;
+    const recorrido=h.scrollHeight-h.clientHeight;
+    barra.style.transform='scaleX('+(recorrido>0 ? h.scrollTop/recorrido : 0)+')';
+  };
+  addEventListener('scroll',pintar,{passive:true});
+  addEventListener('resize',pintar,{passive:true});
+  pintar();
 }
 
 /* ---------- INIT ---------- */
