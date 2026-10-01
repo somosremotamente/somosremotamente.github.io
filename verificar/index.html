@@ -79,6 +79,12 @@ dd{margin:0}
 .codigo{font-variant-numeric:tabular-nums;letter-spacing:.04em;font-weight:700}
 .res__nota{font-size:14px;line-height:1.6;margin:16px 0 0;color:#3d3d36}
 .res--no .res__nota{color:var(--muted)}
+.res__plan{display:inline-block;margin:15px 0 0;font-family:var(--cue);font-size:15px;
+  font-weight:700;padding:12px 20px;border:2px solid var(--ink);border-radius:12px;
+  background:var(--corn);color:var(--ink);text-decoration:none;
+  transition:transform .12s ease, box-shadow .12s ease}
+.res__plan:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--ink)}
+.res__plan:active{transform:translateY(0);box-shadow:none}
 
 /* ---------- pie ---------- */
 .expl{margin:30px 0 0;font-size:14.5px;color:var(--muted)}
@@ -177,7 +183,14 @@ function esc(t){
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-function pinta(clase, sello, ico, titulo, filas, nota){
+function planB(codigo){
+  return '<a class="res__plan" target="_blank" rel="noopener" href="' +
+         API + (API.indexOf('?') >= 0 ? '&' : '?') +
+         'vista=pagina&codigo=' + encodeURIComponent(codigo) + '">' +
+         'Comprobar en una ventana nueva</a>';
+}
+
+function pinta(clase, sello, ico, titulo, filas, nota, extra){
   var html = '<p class="res__sello"><span class="res__ico">' + ico + '</span>' + esc(sello) + '</p>' +
              '<p class="res__tit">' + esc(titulo) + '</p>';
   if (filas && filas.length){
@@ -186,6 +199,7 @@ function pinta(clase, sello, ico, titulo, filas, nota){
     }).join('') + '</dl>';
   }
   if (nota) html += '<p class="res__nota">' + nota + '</p>';
+  if (extra) html += extra;
   caja.className = 'res ' + clase;
   caja.innerHTML = html;
   caja.hidden = false;
@@ -212,7 +226,7 @@ function consultar(codigo, alTerminar){
   setTimeout(function(){
     if (listo) return;
     listo = true; limpiar(); alTerminar(new Error('tiempo'));
-  }, 12000);
+  }, 8000);
 
   s.src = API + (API.indexOf('?') >= 0 ? '&' : '?') +
           'codigo=' + encodeURIComponent(codigo) + '&callback=' + nombre;
@@ -247,10 +261,11 @@ f.addEventListener('submit', function(ev){
 
     if (err || !d){
       pinta('res--no', 'No pudimos comprobarlo', '📡',
-            'Algo falló en la conexión.',
+            'La comprobación automática no llegó.',
             null,
-            'Vuelve a intentarlo en un momento. Si sigue igual, escríbenos a ' +
-            '<a href="mailto:somosremotamente@gmail.com">somosremotamente@gmail.com</a>.');
+            'Suele pasar en navegadores con varias cuentas de Google abiertas. ' +
+            'Pulsa aquí y lo comprobamos en una ventana aparte:',
+            planB(codigo));
       return;
     }
 
@@ -281,7 +296,8 @@ f.addEventListener('submit', function(ev){
       pinta('res--no', 'No pudimos comprobarlo', '📡',
             'Hubo un problema de nuestro lado.',
             null,
-            'Vuelve a intentarlo en un momento.');
+            'Puedes intentarlo en una ventana aparte:',
+            planB(codigo));
       return;
     }
 
