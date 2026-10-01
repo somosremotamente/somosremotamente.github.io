@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verificar un certificado · Somos Remotamente</title>
+<meta name="description" content="Comprueba si un certificado o una constancia de Somos Remotamente es auténtico, con su código de validación.">
+<meta name="theme-color" content="#FFE45C">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAwFBMVEX///////3+///+/v79///6+v38+ur07L7/7WL/5WH/7Fv/6Fz/5F785F795VL/41//413/41j94lz74F7X1Mb631vw2Fn63lHw103r0kvjzFHFwKzXwlfbw0LSvEm5sZLGsVXHsUOqi/CnieymiOyliOilh+qjhuyjheahhOyhhOSghOSjiNaiheGumV+ginChhOOghOOfhNShg+uhg+Ogg+OegPCZfOqfgtqWf4mUeOOOdNCMdaZ9bJA5ODcEBASAjdPkAAACpklEQVR42lWTi7KiMAyG63o4thYFkTtYqIIiToHOLLgI6vu/1aaoZ3Yz4xTJR5Imf1CprMiLovzPCng1PSD4tfnhkMMpG/EyCX/Uu1YBv8s220vZSFEcz90VrDsdAWmk3Gdt+RsiZEf4QuTn2zD2dVXV/ThcMwFfy2OmUrT7tmzFaRir0F8vwdY+q0dAysmFmgP48+uYemGSJKlPdD8Mg109nBRxaJDcX9r81gfLNNK+vrQkiCPbtpOAj2dRXvYSXXLw1+tlaqPZbIZ+9TYC0xKf389CFhfUlOLar3EczZVpyI7mGhxauuYjZGlQKc6jT9aJNlMA0pAikW1H/oYPcE8k8yFdEj+aABQ9HpEG/sfz7pCgvhYlEl1vERrar/iP5/OO0DccT5c4u/EkEQRYOB9AOQCI4Hg4uhFUV4FOo7vwSBj9ANEbwI7uQRWo6xcAeKpIDfXg0LQ5pHiE2NJVDtTVi8XaoDG0QZvPknv0akO6tEx9u+u7N2DQ1P4Chx3Hif1tRzG1zH8Aj5j6Jk6iKA0p9uM49qlp/gA9/t4Ypmlg3/c2OGSEUkqsCXCgmSgb4m8ChM5Yul1ZjDG6tSa/afjVLVeNwlCE7jDs8pXOCHNMnervDGeBYJYVJhuLMhfiY+bGLnVCR38HkKCoDIaxNXWXU8odl7GVy2O2sgyoQA2rKeVEWDTkq9DFFcfcxcyZrqDGfSkuIhsZBsLlnFdDz0K85StjV19FC4IBySlJQGctYvH79djdechDmPUtb5XklGhL0Y0B3B16n/3p+iB2iSqwnUQ7afsCl/XINBx4WhPiTWqaZP9aHHXZpap7Aozt7g4FvhbnvXriBMr0+XCcIgTVrWh/Vm9a3iIfYgwiFBJI1YHis7yf9c9vKVWtlcchDupOfNb/L2DggF2p5cKHAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX////4+f/+/v328MLp6N/i4uX76Yju3pL/8Vb/7Vf/6lj/5V/+5VT+4lf54lL43l3f1aPm1HPu1lrmzV702lTw2FLr0lLmzVDQxpHgxl/bwlPfxU3VvErCsZHOuGjKtFXEq16vkPSvj/WnieyliOylh+ijhuqjheejhuahhOehhOSnkrGih8ahheG6ooGpkYeijW2ggu6gg+SegPGcf+6egd2af82agLuZfO2YfOGWe9aXfMuVetpcWU86OTwAAAB+dFObAAAA5klEQVR42hXPW4NCQBiA4Y9lpRHrkCkhlDCzWIcwDvX//9VOt8/V+wIhWZpnTd81WZlmhAAhyWN6UkrHZ5cmHNq4mKvQPOr4WrMiaaG8D54pCdJJkpRovpfwmM+WDACyCLIZsRymancSROG1icH7b1d3MCh7DvT9EjcO1xl+lb0tg7xRoJuB8AhUQQdT+vo2fxSEPjBycC6Oi3XtgJC3AAu4W5Z1MSwD6XUPOQtVA7tH38G2Gq0ZD1u5+PUSuY638LA2Keazipeu0vHYxC2fi5tR84Yp1Ooubj+32Y3ZEesDf73lhPwDpVYfZbpWeRQAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yusei+Magic&family=Karla:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --corn:#FFE45C; --lavender:#A184E4; --lavender-txt:#6B4BC4;
+  --pear:#C2CF38; --beige:#F5F4E2; --ink:#141414; --paper:#FFFFFF;
+  --muted:#5f5f58; --line:#E6E4CF;
+  --emoji:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  --tit:"Yusei Magic","Trebuchet MS",system-ui,sans-serif;
+  --cue:Karla,"Trebuchet MS",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--beige); color:var(--ink);
+  font-family:var(--cue); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  min-height:100%;
+  padding:0 16px env(safe-area-inset-bottom,0px);
+  display:flex; flex-direction:column; align-items:center;
+}
+a{color:var(--lavender-txt)}
+
+/* ---------- cabecera ---------- */
+.top{width:100%;max-width:620px;padding:26px 0 0;display:flex;align-items:center;gap:10px}
+.marca{font-family:var(--tit);font-size:17px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:9px}
+.bomb{width:26px;height:26px;flex:0 0 26px}
+
+/* ---------- tarjeta ---------- */
+main{width:100%;max-width:620px;padding:30px 0 56px}
+h1{font-family:var(--tit);font-size:clamp(27px,6vw,38px);line-height:1.18;margin:14px 0 12px;text-wrap:balance}
+.intro{font-size:17px;color:var(--muted);margin:0 0 26px;max-width:52ch}
+
+.caja{background:var(--paper);border-radius:20px;padding:26px 22px;border:1px solid var(--line)}
+label{display:block;font-weight:700;font-size:14px;margin:0 0 9px}
+.fila{display:flex;gap:10px;flex-wrap:wrap}
+input{
+  flex:1 1 230px; min-width:0;
+  font-family:var(--cue); font-size:17px; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase;
+  padding:14px 15px; color:var(--ink); background:var(--beige);
+  border:2px solid var(--line); border-radius:12px;
+}
+input::placeholder{letter-spacing:.04em;text-transform:none;font-weight:400;color:#9b9a8c}
+input:focus{outline:none;border-color:var(--lavender);background:var(--paper)}
+button{
+  flex:0 0 auto; font-family:var(--cue); font-size:16px; font-weight:700;
+  padding:14px 24px; border:2px solid var(--ink); border-radius:12px;
+  background:var(--corn); color:var(--ink); cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+button:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--ink)}
+button:active{transform:translateY(0);box-shadow:none}
+button[disabled]{opacity:.55;cursor:wait;transform:none;box-shadow:none}
+.pista{font-size:13.5px;color:var(--muted);margin:12px 0 0}
+
+/* ---------- resultado ---------- */
+.res{margin:20px 0 0;border-radius:18px;padding:22px;border:2px solid var(--ink)}
+.res[hidden]{display:none!important}
+.res--ok{background:var(--corn)}
+.res--no{background:var(--paper);border-color:var(--line)}
+.res__sello{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 7px;display:flex;align-items:center;gap:7px}
+.res__ico{font-family:var(--emoji);font-size:15px}
+.res__tit{font-family:var(--tit);font-size:21px;line-height:1.3;margin:0 0 16px}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 16px;font-size:15.5px}
+dt{font-weight:700;color:#3d3d36}
+dd{margin:0}
+.codigo{font-variant-numeric:tabular-nums;letter-spacing:.04em;font-weight:700}
+.res__nota{font-size:14px;line-height:1.6;margin:16px 0 0;color:#3d3d36}
+.res--no .res__nota{color:var(--muted)}
+
+/* ---------- pie ---------- */
+.expl{margin:30px 0 0;font-size:14.5px;color:var(--muted)}
+.expl h2{font-family:var(--tit);font-size:17px;color:var(--ink);margin:0 0 9px}
+.expl p{margin:0 0 11px;max-width:60ch}
+footer{width:100%;max-width:620px;padding:22px 0 34px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --beige:#17170F; --paper:#201F16; --ink:#F6F5E8;
+    --muted:#A9A79A; --line:#343226; --lavender-txt:#C4ADF4;
+    color-scheme:dark;
+  }
+  :root:not([data-theme="light"]) .res--ok{background:#3C3515}
+  :root:not([data-theme="light"]) button{background:var(--corn);color:#141414;border-color:#141414}
+  :root:not([data-theme="light"]) .res{border-color:var(--line)}
+  :root:not([data-theme="light"]) dt,
+  :root:not([data-theme="light"]) .res__nota{color:#C9C7B8}
+}
+:root[data-theme="dark"]{
+  --beige:#17170F; --paper:#201F16; --ink:#F6F5E8;
+  --muted:#A9A79A; --line:#343226; --lavender-txt:#C4ADF4;
+  color-scheme:dark;
+}
+:root[data-theme="dark"] .res--ok{background:#3C3515}
+:root[data-theme="dark"] button{background:var(--corn);color:#141414;border-color:#141414}
+:root[data-theme="dark"] .res{border-color:var(--line)}
+:root[data-theme="dark"] dt,
+:root[data-theme="dark"] .res__nota{color:#C9C7B8}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <a class="marca" href="/">
+    <svg class="bomb" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 4c-8.3 0-15 6.5-15 14.6 0 5.2 2.6 8.9 5 11.7 1.5 1.8 2.6 3.1 2.6 4.9v1.3h14.8v-1.3c0-1.8 1.1-3.1 2.6-4.9 2.4-2.8 5-6.5 5-11.7C39 10.5 32.3 4 24 4Z" fill="#FFE45C" stroke="#141414" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M17.6 40.3h12.8M18.8 44h10.4" stroke="#141414" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="19.4" cy="19" r="2.1" fill="#141414"/>
+      <circle cx="28.6" cy="19" r="2.1" fill="#141414"/>
+      <path d="M21 25.4c1.8 1.5 4.2 1.5 6 0" stroke="#141414" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    </svg>
+    Somos Remotamente
+  </a>
+</div>
+
+<main>
+  <h1>Verificar un certificado</h1>
+  <p class="intro">Cada certificado y cada constancia que emitimos lleva un código único impreso.
+     Escríbelo aquí y te confirmamos si es auténtico.</p>
+
+  <form class="caja" id="f" autocomplete="off" novalidate>
+    <label for="c">Código de validación</label>
+    <div class="fila">
+      <input id="c" name="c" placeholder="SR-WEB-CURSO2026-001"
+             inputmode="latin" spellcheck="false" aria-describedby="pista">
+      <button type="submit" id="b">Verificar</button>
+    </div>
+    <p class="pista" id="pista">Está impreso en el documento, debajo de la firma.
+       No importan los guiones ni las mayúsculas.</p>
+  </form>
+
+  <section class="res" id="res" hidden aria-live="polite"></section>
+
+  <div class="expl">
+    <h2>¿Por qué no aparece ningún nombre?</h2>
+    <p>Por decisión nuestra. Esta página solo confirma que un código existe y a qué curso
+       corresponde: no muestra nombres, correos ni calificaciones de nadie. Si necesitas
+       comprobar que el documento pertenece a una persona concreta, compara el nombre
+       impreso en el documento con el que esa persona te dio.</p>
+    <h2>¿El código no aparece?</h2>
+    <p>Revisa que esté completo y vuelve a intentarlo. Si sigue sin aparecer,
+       escríbenos a <a href="mailto:somosremotamente@gmail.com">somosremotamente@gmail.com</a>
+       con una imagen del documento y lo revisamos.</p>
+  </div>
+</main>
+
+<footer>
+  Somos Remotamente · academia asincrónica de trabajo remoto para Latinoamérica
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   PEGA AQUÍ LA URL DE TU APLICACIÓN WEB DE APPS SCRIPT.
+   Termina en /exec  — no en /dev
+   ───────────────────────────────────────────────────────────── */
+var API = 'https://script.google.com/macros/s/AKfycbyDwtzqeDTcR1nzd8DOpEzZzGL8K_mRWIaI9aNsfViXptn9qbQcR65_Q4LDVQVrNTwlLA/exec';
+
+var f = document.getElementById('f');
+var campo = document.getElementById('c');
+var boton = document.getElementById('b');
+var caja = document.getElementById('res');
+
+function esc(t){
+  return String(t == null ? '' : t)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function pinta(clase, sello, ico, titulo, filas, nota){
+  var html = '<p class="res__sello"><span class="res__ico">' + ico + '</span>' + esc(sello) + '</p>' +
+             '<p class="res__tit">' + esc(titulo) + '</p>';
+  if (filas && filas.length){
+    html += '<dl>' + filas.map(function(p){
+      return '<dt>' + esc(p[0]) + '</dt><dd' + (p[2] ? ' class="codigo"' : '') + '>' + esc(p[1]) + '</dd>';
+    }).join('') + '</dl>';
+  }
+  if (nota) html += '<p class="res__nota">' + nota + '</p>';
+  caja.className = 'res ' + clase;
+  caja.innerHTML = html;
+  caja.hidden = false;
+}
+
+/* JSONP: Apps Script responde bien así desde cualquier dominio */
+function consultar(codigo, alTerminar){
+  var nombre = 'sr_' + Date.now();
+  var s = document.createElement('script');
+  var listo = false;
+
+  function limpiar(){
+    try { delete window[nombre]; } catch(e){ window[nombre] = undefined; }
+    if (s.parentNode) s.parentNode.removeChild(s);
+  }
+
+  window[nombre] = function(datos){
+    listo = true; limpiar(); alTerminar(null, datos);
+  };
+  s.onerror = function(){
+    if (listo) return;
+    listo = true; limpiar(); alTerminar(new Error('red'));
+  };
+  setTimeout(function(){
+    if (listo) return;
+    listo = true; limpiar(); alTerminar(new Error('tiempo'));
+  }, 12000);
+
+  s.src = API + (API.indexOf('?') >= 0 ? '&' : '?') +
+          'codigo=' + encodeURIComponent(codigo) + '&callback=' + nombre;
+  document.body.appendChild(s);
+}
+
+f.addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var codigo = campo.value.trim();
+
+  if (!codigo){
+    pinta('res--no', 'Falta el código', '✏️', 'Escribe el código impreso en el documento.');
+    campo.focus();
+    return;
+  }
+
+  if (API.indexOf('PEGA_AQUI') === 0){
+    pinta('res--no', 'Sin configurar', '🔧',
+          'Esta página todavía no está conectada.',
+          null,
+          'Falta pegar la URL de la aplicación web en el archivo ' +
+          '<code>verificar/index.html</code>.');
+    return;
+  }
+
+  boton.disabled = true;
+  boton.textContent = 'Verificando…';
+
+  consultar(codigo, function(err, d){
+    boton.disabled = false;
+    boton.textContent = 'Verificar';
+
+    if (err || !d){
+      pinta('res--no', 'No pudimos comprobarlo', '📡',
+            'Algo falló en la conexión.',
+            null,
+            'Vuelve a intentarlo en un momento. Si sigue igual, escríbenos a ' +
+            '<a href="mailto:somosremotamente@gmail.com">somosremotamente@gmail.com</a>.');
+      return;
+    }
+
+    if (d.estado === 'valido'){
+      var filas = [];
+      if (d.tipo)    filas.push(['Documento', d.tipo]);
+      if (d.curso)   filas.push(['Curso', d.curso]);
+      if (d.emision) filas.push(['Emitido el', d.emision]);
+      filas.push(['Código', d.codigo, true]);
+      pinta('res--ok', 'Documento auténtico', '✅',
+            d.tipo || 'Documento emitido por Somos Remotamente',
+            filas,
+            'Este código está registrado en nuestros archivos. Compara el nombre impreso ' +
+            'en el documento con el de la persona que te lo entregó.');
+      return;
+    }
+
+    if (d.estado === 'anulado'){
+      pinta('res--no', 'Código anulado', '⚠️',
+            'Este código existió, pero ya no es válido.',
+            [['Código', codigo.toUpperCase(), true]],
+            'Si crees que es un error, escríbenos a ' +
+            '<a href="mailto:somosremotamente@gmail.com">somosremotamente@gmail.com</a>.');
+      return;
+    }
+
+    if (d.estado === 'error'){
+      pinta('res--no', 'No pudimos comprobarlo', '📡',
+            'Hubo un problema de nuestro lado.',
+            null,
+            'Vuelve a intentarlo en un momento.');
+      return;
+    }
+
+    pinta('res--no', 'No encontramos este código', '🔍',
+          'No hay ningún documento con este código.',
+          [['Buscaste', codigo.toUpperCase(), true]],
+          'Revisa que esté completo y sin caracteres de más. Si el documento lo trae ' +
+          'impreso tal cual, escríbenos a ' +
+          '<a href="mailto:somosremotamente@gmail.com">somosremotamente@gmail.com</a> ' +
+          'con una imagen y lo revisamos.');
+  });
+});
+
+/* Permite enlazar directo: /verificar?codigo=SR-WEB-...  o  /verificar#SR-WEB-... */
+(function(){
+  var q = new URLSearchParams(location.search).get('codigo');
+  var h = location.hash ? location.hash.slice(1) : '';
+  var pre = q || (/^[A-Za-z0-9-]{6,}$/.test(h) ? h : '');
+  if (pre){
+    campo.value = pre;
+    f.dispatchEvent(new Event('submit'));
+  }
+})();
+</script>
+</body>
+</html>
