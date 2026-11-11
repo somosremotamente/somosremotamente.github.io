@@ -436,7 +436,7 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="section-head">
         <h2>Dieciocho cursos, seis áreas</h2>
-        <p class="muted">La academia se organiza por áreas formativas. Cada curso se compra por separado, cuesta US$5 y el acceso no vence.</p>
+        <p class="muted">La academia se organiza por áreas formativas. Cada curso cuesta US$5 y el acceso no vence. También puedes llevar varios juntos en un pack.</p>
       </div>
       <div class="grid g-3" id="homeAreas"></div>
       <p style="margin-top:2rem"><a href="#/cursos" data-link class="btn btn--ink">Ver el catálogo completo</a></p>
@@ -511,10 +511,39 @@ button{font:inherit;color:inherit}
   <div class="band band--beige" style="border-bottom:var(--line)">
     <div class="wrap">
       <h1 style="margin-bottom:.3rem">Catálogo</h1>
-      <p class="lead" style="max-width:62ch">Dieciocho cursos repartidos en seis áreas formativas. <strong>Todos cuestan US$5</strong>, se compran por separado y el acceso no vence. Comparten la misma estructura: ocho módulos asincrónicos, recursos descargables y un examen final de 15 preguntas.</p>
+      <p class="lead" style="max-width:62ch">Dieciocho cursos repartidos en seis áreas formativas. <strong>Todos cuestan US$5</strong>, se compran uno por uno o en pack, y el acceso no vence. Comparten la misma estructura: ocho módulos asincrónicos, recursos descargables y un examen final de 15 preguntas.</p>
     </div>
   </div>
 
+
+  <!-- PACK (agregado 11-nov-2026) -->
+  <div class="band" id="pack-empieza" style="padding-bottom:0">
+    <div class="wrap">
+      <article class="area" style="background:var(--corn);max-width:980px">
+        <div class="area__top">
+          <div>
+            <p style="font-size:var(--tiny);margin:0 0 .3rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700">Pack · Carrera remota y empleabilidad</p>
+            <h2 style="margin:0 0 .4rem">Pack Empieza en remoto</h2>
+            <p style="margin:0;max-width:60ch">Cuatro cursos para dar tus primeros pasos en el trabajo remoto: saber por dónde empezar, organizar tus primeros meses, presentarte bien y comunicarte en inglés en el día a día.</p>
+          </div>
+        </div>
+        <div>
+          <strong style="font-size:var(--tiny)">Incluye estos cursos</strong>
+          <ul style="margin-top:.4rem;color:var(--ink)">
+            <li>Cómo iniciar tu carrera remota</li>
+            <li>Tus primeros 90 días en remoto</li>
+            <li>Branding personal para profesionales remotos</li>
+            <li>Inglés funcional para trabajar en remoto</li>
+          </ul>
+        </div>
+        <p style="font-size:var(--tiny);margin:0;border-left:3px solid var(--ink);padding-left:.7rem">Cada curso es independiente: los haces en el orden que quieras, a tu ritmo, y recibes el documento de cada uno al terminarlo.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
+          <span class="price">US$15<small style="color:var(--ink)">Pago único · acceso sin vencimiento · por separado suman US$20</small></span>
+          <a class="btn" style="background:#FFFFFF;color:var(--ink);border-color:var(--ink)" data-cta data-curso="Pack Empieza en remoto" href="#">Empezar con el pack por US$15</a>
+        </div>
+      </article>
+    </div>
+  </div>
   <div class="band">
     <div class="wrap">
       <div class="filters" role="group" aria-label="Filtros del catálogo">
@@ -694,7 +723,7 @@ button{font:inherit;color:inherit}
       <h2>Preguntas frecuentes</h2>
       <div class="faq" style="margin-top:1.5rem">
         <details open><summary>¿Los cursos tienen horarios o fechas de inicio?</summary><div class="faq__body"><p>No. Todo es asincrónico: el contenido queda disponible desde que te inscribes y avanzas a tu ritmo, sin sesiones obligatorias.</p></div></details>
-        <details><summary>¿Cuánto cuesta cada curso y qué incluye ese precio?</summary><div class="faq__body"><p>Cada curso cuesta <strong>US$5</strong>, en un solo pago. Ese precio incluye los ocho módulos, los recursos descargables del curso, el examen final con reintentos sin límite y el documento que corresponda al terminar. No hay suscripción, no hay cobros posteriores y el acceso no vence. Si quieres hacer varios cursos, se compran por separado.</p></div></details>
+        <details><summary>¿Cuánto cuesta cada curso y qué incluye ese precio?</summary><div class="faq__body"><p>Cada curso cuesta <strong>US$5</strong>, en un solo pago. Ese precio incluye los ocho módulos, los recursos descargables del curso, el examen final con reintentos sin límite y el documento que corresponda al terminar. No hay suscripción, no hay cobros posteriores y el acceso no vence. Si quieres hacer varios, puedes comprarlos uno por uno o llevar el <a href="#/cursos" data-link>Pack Empieza en remoto</a>: cuatro cursos por US$15.</p></div></details>
         <details><summary>¿Qué diferencia hay entre la constancia y el certificado?</summary><div class="faq__body"><p>La constancia de participación acredita que recorriste el contenido del programa. El certificado de aprobación requiere además haber superado el examen final, y detalla al reverso los módulos cursados y el resultado obtenido.</p></div></details>
         <details><summary>¿Sé qué me van a preguntar antes de inscribirme?</summary><div class="faq__body"><p>Sí. La ficha de cada curso publica los módulos que lo componen, y el examen final se limita a ese contenido. No hay preguntas sorpresa fuera del temario.</p></div></details>
         <details><summary>¿Desde qué países puedo estudiar?</summary><div class="faq__body"><p>Desde cualquiera. El contenido está en español y pensado para el contexto latinoamericano, incluyendo conexión intermitente y estudio en horarios partidos.</p></div></details>
@@ -735,6 +764,7 @@ button{font:inherit;color:inherit}
 
       <h2>3 · Precio, pago y acceso</h2>
       <p>Cada curso cuesta <strong>US$5</strong> en un pago único. No hay suscripción, cobros recurrentes ni cargos posteriores.</p>
+      <p>Los packs reúnen varios cursos a un precio propio, indicado en la web. Cada curso del pack se rige por estas mismas condiciones.</p>
       <p>El pago se hace por transferencia o pago móvil a los datos que te enviamos tras recibir tu formulario de inscripción. <strong>El acceso se activa cuando verificamos el pago</strong>, dentro de las 24 horas siguientes en días hábiles. Atendemos de lunes a viernes, de 8:00 a 17:00 (UTC−4).</p>
       <p>El acceso no vence: una vez matriculado, el curso queda disponible mientras la academia siga operando.</p>
 
