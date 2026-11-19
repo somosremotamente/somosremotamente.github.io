@@ -452,7 +452,7 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="section-head">
         <h2>Varios cursos, distintas áreas</h2>
-        <p class="muted">La academia se organiza por áreas formativas. Cada curso cuesta US$5 y el acceso no vence. También puedes llevar varios juntos en un pack.</p>
+        <p class="muted">La academia se organiza por áreas formativas. Los cursos cuestan US$5 y los minicursos de habilidades blandas, US$2. El acceso no vence y también puedes llevar varios cursos juntos en un pack.</p>
       </div>
       <div class="grid g-3" id="homeAreas"></div>
       <p style="margin-top:2rem"><a href="#/cursos" data-link class="btn btn--ink">Ver los cursos</a></p>
@@ -513,7 +513,7 @@ button{font:inherit;color:inherit}
   <div class="band band--corn">
     <div class="wrap center">
       <h2 style="max-width:22ch;margin-inline:auto">Empieza por donde estés, no por donde deberías estar</h2>
-      <p class="muted" style="margin-inline:auto;max-width:52ch">Cursos independientes a US$5 cada uno. Mira lo que cubre cada uno y elige el que resuelve tu próximo paso.</p>
+      <p class="muted" style="margin-inline:auto;max-width:52ch">Cursos independientes a US$5 y minicursos a US$2. Mira lo que cubre cada uno y elige el que resuelve tu próximo paso.</p>
       <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem">
         <a href="#/cursos" data-link class="btn btn--ink">Ver los cursos</a>
         <a class="btn" data-cta href="#">Inscribirme</a>
@@ -527,7 +527,7 @@ button{font:inherit;color:inherit}
   <div class="band band--beige" style="border-bottom:var(--line)">
     <div class="wrap">
       <h1 style="margin-bottom:.3rem">Los cursos</h1>
-      <p class="lead" style="max-width:62ch">Varios cursos independientes en distintas áreas. <strong>Todos cuestan US$5</strong>, se compran uno por uno o en pack, y el acceso no vence. Cada curso tiene módulos a tu ritmo, recursos descargables y un examen final.</p>
+      <p class="lead" style="max-width:62ch">Varios cursos independientes en distintas áreas. <strong>Los cursos cuestan US$5 y los minicursos de habilidades blandas, US$2.</strong> Se compran uno por uno (los cursos, también en pack) y el acceso no vence. Todos tienen módulos a tu ritmo, recursos descargables y un examen final.</p>
     </div>
   </div>
 
@@ -739,7 +739,7 @@ button{font:inherit;color:inherit}
       <h2>Preguntas frecuentes</h2>
       <div class="faq" style="margin-top:1.5rem">
         <details open><summary>¿Los cursos tienen horarios o fechas de inicio?</summary><div class="faq__body"><p>No. Todo es asincrónico: el contenido queda disponible desde que te inscribes y avanzas a tu ritmo, sin sesiones obligatorias.</p></div></details>
-        <details><summary>¿Cuánto cuesta cada curso y qué incluye ese precio?</summary><div class="faq__body"><p>Cada curso cuesta <strong>US$5</strong>, en un solo pago. Ese precio incluye los ocho módulos, los recursos descargables del curso, el examen final con reintentos sin límite y el documento que corresponda al terminar. No hay suscripción, no hay cobros posteriores y el acceso no vence. Si quieres hacer varios, puedes comprarlos uno por uno o llevar el <a href="#/cursos" data-link>Pack Empieza en remoto</a>: cuatro cursos por US$15.</p></div></details>
+        <details><summary>¿Cuánto cuesta cada curso y qué incluye ese precio?</summary><div class="faq__body"><p>Cada curso cuesta <strong>US$5</strong>, en un solo pago. Ese precio incluye los ocho módulos, los recursos descargables del curso, el examen final con reintentos sin límite y el documento que corresponda al terminar. No hay suscripción, no hay cobros posteriores y el acceso no vence. Si quieres hacer varios, puedes comprarlos uno por uno o llevar el <a href="#/cursos" data-link>Pack Empieza en remoto</a>: cuatro cursos por US$15.</p><p>Los <strong>minicursos de habilidades blandas</strong> cuestan <strong>US$2</strong>: incluyen dos módulos cortos, una plantilla para descargar, el examen final y el certificado de aprobación.</p></div></details>
         <details><summary>¿Qué diferencia hay entre la constancia y el certificado?</summary><div class="faq__body"><p>La constancia de participación acredita que recorriste el contenido del programa. El certificado de aprobación requiere además haber superado el examen final, y detalla al reverso los módulos cursados y el resultado obtenido.</p></div></details>
         <details><summary>¿Sé qué me van a preguntar antes de inscribirme?</summary><div class="faq__body"><p>Sí. La ficha de cada curso publica los módulos que lo componen, y el examen final se limita a ese contenido. No hay preguntas sorpresa fuera del temario.</p></div></details>
         <details><summary>¿Desde qué países puedo estudiar?</summary><div class="faq__body"><p>Desde cualquiera. El contenido está en español y pensado para el contexto latinoamericano, incluyendo conexión intermitente y estudio en horarios partidos.</p></div></details>
@@ -984,7 +984,9 @@ const AREAS = [
   { id:'finanzas',     ico:'💵', nombre:'Finanzas básicas y cobros desde Latinoamérica',
     resumen:'Cómo se cotiza, se cobra y se sostiene un ingreso independiente desde la región.' },
   { id:'profesional',  ico:'🧠', nombre:'Desarrollo profesional y habilidades blandas',
-    resumen:'Comunicación escrita e idioma: lo que decide si te entienden, te responden y te vuelven a buscar.' }
+    resumen:'Comunicación escrita e idioma: lo que decide si te entienden, te responden y te vuelven a buscar.' },
+  { id:'minicursos',   ico:'🌱', nombre:'Minicursos de habilidades blandas',
+    resumen:'Cursos cortos, de dos módulos, para trabajar mejor con otras personas: liderar, comunicar, negociar y cuidar tu energía.' }
 ];
 
 const CURSOS = [
@@ -1291,6 +1293,170 @@ const CURSOS = [
       'Examen final para obtener tu certificado de aprobación'
     ],
     nota:'Requiere inglés básico previo. No es un curso de inglés desde cero.'
+  },
+
+  /* ---------- Minicursos de habilidades blandas (US$2, certificado incluido) ---------- */
+  {
+    id:'liderazgo', area:'minicursos', ico:'🧭', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Liderazgo: Lidera sin ser el jefe',
+    resumen:'Gánate la confianza de tu equipo, toma la iniciativa y ayuda a que todos avancen, tengas o no un cargo.',
+    competencias:[
+      'Entender de dónde viene la influencia. Vas a ver que liderar no depende del cargo: depende de cumplir lo que dices, ayudar sin que te lo pidan, compartir lo que sabes y reconocer el trabajo de otros.',
+      'Ganarte la confianza aunque trabajen a distancia. Por ejemplo: avisar apenas sabes que una entrega se atrasa, en vez de esperar a que alguien lo note.',
+      'Proponer una idea para que la escuchen. Vas a ordenarla en tres pasos (el problema, tu propuesta y lo que gana el equipo) y a pedir el espacio para contarla.',
+      'Repartir tareas sin que nadie se sienta mandado. Cuando te toque coordinar algo, vas a saber decir qué hay que hacer, para cuándo y con qué apoyo cuenta cada persona.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Guía para liderar sin ser el jefe, con una revisión semanal, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'oratoria', area:'minicursos', ico:'🎤', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Oratoria: Habla en público sin que te tiemble la voz',
+    resumen:'Prepara lo que vas a decir y dilo con calma, en una sala o frente a la cámara.',
+    competencias:[
+      'Preparar una presentación en poco tiempo. Vas a empezar por lo que quieres que tu público recuerde y ordenar todo en tres partes: cómo empiezas, tus ideas principales y cómo cierras.',
+      'Empezar de una forma que atrape. Por ejemplo, con una pregunta o un dato de tu trabajo, en lugar de «bueno, eh, hoy les voy a hablar de…».',
+      'Calmar los nervios antes y durante. Una respiración de un minuto, qué hacer con la voz y las pausas, y cómo salir de un bloqueo si te quedas en blanco.',
+      'Hablar bien frente a la cámara y responder preguntas. Vas a saber dónde mirar en una videollamada y qué decir cuando no sabes una respuesta.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Plantilla para preparar una presentación de 5 minutos, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'inteligencia-emocional', area:'minicursos', ico:'💛', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Inteligencia emocional: Que tus emociones no decidan por ti',
+    resumen:'Reconoce lo que sientes en el trabajo y responde con calma, en vez de reaccionar.',
+    competencias:[
+      'Ponerle nombre a lo que sientes. «Estoy mal» dice poco; vas a distinguir si es cansancio, frustración o preocupación, y eso te ayuda a saber qué necesitas.',
+      'Hacer una pausa antes de responder. Por ejemplo, cuando un mensaje te molesta: parar, respirar, nombrar lo que sientes y recién después contestar.',
+      'Separar lo que pasó de lo que imaginas. Un «ok» seco es un hecho; «está enojada conmigo» es una suposición. Vas a responder con información, no con miedo.',
+      'Recuperarte de un mal día. Pasos sencillos para cerrar el día, volver a tu centro y empezar el siguiente con algo fácil.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Registro de emociones y guía para responder con calma, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ],
+    nota:'Este minicurso no reemplaza la ayuda de un profesional de la salud mental.'
+  },
+  {
+    id:'dar-y-recibir-comentarios', area:'minicursos', ico:'💬', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Dar y recibir comentarios: Critica sin herir, escucha sin ofenderte',
+    resumen:'Da comentarios que ayudan y recibe críticas sin tomarlas como un ataque.',
+    competencias:[
+      'Decir algo difícil sin herir. Vas a usar un método en tres partes: qué pasó, qué efecto tuvo y qué propones. Por ejemplo, para decirle a un compañero que sus entregas llegan tarde.',
+      'Hablar de hechos, no de cómo es la persona. En vez de «eres desordenado», vas a decir lo que pasó, para que se entienda qué cambiar.',
+      'Elegir el momento y el canal. Vas a saber cuándo conviene escribirlo y cuándo es mejor una videollamada, y por qué nunca en el chat del grupo.',
+      'Recibir una crítica sin ofenderte. Escuchar hasta el final, hacer preguntas para entender y responder con calma, incluso si te parece injusta.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Guía para dar y recibir comentarios, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'manejo-de-conflictos', area:'minicursos', ico:'🤝', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Manejo de conflictos: Apaga los conflictos antes de que crezcan',
+    resumen:'Detecta los desacuerdos a tiempo y resuélvelos con una conversación, no con una guerra de mensajes.',
+    competencias:[
+      'Notar un conflicto antes de que explote. Mensajes más secos, alguien que deja de opinar, tareas que «se olvidan»: vas a reconocer las señales.',
+      'Evitar malentendidos por escrito. Por ejemplo, cuándo dejar de discutir por chat y proponer una llamada de diez minutos.',
+      'Entender qué hay detrás de lo que pide cada uno. Lo que alguien dice que quiere y por qué lo quiere no son lo mismo, y ahí aparecen las soluciones.',
+      'Resolver un desacuerdo en una conversación. Un orden sencillo en cuatro pasos, cómo hablar sin acusar y cómo dejar el acuerdo por escrito.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Guía para resolver un desacuerdo, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'poner-limites', area:'minicursos', ico:'🛑', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Poner límites: Aprende a decir que no (sin culpa)',
+    resumen:'Cuida tu tiempo y tu energía diciendo que no con respeto, sin quedar mal.',
+    competencias:[
+      'Darte cuenta de cuándo te estás pasando. Por ejemplo, si respondes mensajes del trabajo a las 11 p. m. sin que nadie te lo pida.',
+      'Definir tus límites con claridad. Límites de horario, de tareas y de trato, escritos de forma que los demás sepan qué esperar de ti.',
+      'Decir que no sin dar mil explicaciones. Una respuesta en tres partes: agradecer, decir que no con claridad y ofrecer algo si puedes.',
+      'Sostener tu límite cuando insisten. Vas a saber qué decir si tu jefa te pide una tarea más o un cliente quiere todo para mañana.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Guía para poner límites sin culpa, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'negociacion', area:'minicursos', ico:'⚖️', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Negociación: Negocia con calma y sin miedo',
+    resumen:'Prepárate, pide lo que necesitas y llega a acuerdos que funcionen para las dos partes.',
+    competencias:[
+      'Prepararte antes de hablar. Vas a anotar lo ideal, lo aceptable y tu límite, y qué harás si no hay acuerdo. Eso solo ya baja mucho los nervios.',
+      'Entender qué necesita la otra parte. Por ejemplo, si un cliente pide algo para el miércoles porque el jueves presenta, quizás le sirve recibir antes solo una parte.',
+      'Pedir sin disculparte. Plantear lo que necesitas de forma clara y amable, con un porqué, sin «perdón que te moleste».',
+      'Ceder sin perder y cerrar por escrito. Dar algo a cambio de algo y confirmar el acuerdo en un mensaje corto para que nadie recuerde otra cosa.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Hoja para preparar una negociación, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'persuasion', area:'minicursos', ico:'💡', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Persuasión: Convence sin presionar',
+    resumen:'Presenta tus ideas para que otros quieran sumarse, sin manipular ni insistir de más.',
+    competencias:[
+      'Hablarle a cada persona de lo que le importa. Vas a pasar de «esta herramienta me gusta» a «con esto, tu reporte te llega dos días antes».',
+      'Armar tu propuesta en tres pasos. El problema, lo que propones y lo que gana la otra persona, con un dato o un ejemplo que lo respalde.',
+      'Proponer una prueba en vez de un cambio enorme. Por ejemplo, «probemos dos semanas y lo revisamos», que es mucho más fácil de aceptar.',
+      'Responder dudas y saber cuándo no insistir. Vas a contestar una objeción con calma y saber qué hacer cuando la respuesta es no.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Plantilla para presentar una propuesta, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'trabajo-en-equipo-a-distancia', area:'minicursos', ico:'🌎', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Trabajo en equipo a distancia: Equipos que funcionan aunque estén lejos',
+    resumen:'Acuerdos, canales y reuniones para que un equipo trabaje bien sin estar en la misma oficina.',
+    competencias:[
+      'Ponerse de acuerdo en lo básico. Horarios, en cuánto tiempo se responde, qué va por chat, por correo o en reunión, y dónde se guarda todo.',
+      'Coordinar con personas en otros países. Por ejemplo, escribir la hora con su zona («10 a. m., hora de Bogotá») y encontrar un horario en común.',
+      'Escribir mensajes que se entienden solos. En vez de «¿tienes un minuto?», un mensaje completo que la otra persona pueda responder de una vez.',
+      'Hacer reuniones que sirven. Con objetivo y agenda, y que terminen con tareas claras: quién hace qué y para cuándo.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Plantilla de acuerdos del equipo, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ]
+  },
+  {
+    id:'manejo-del-estres', area:'minicursos', ico:'🌿', nivel:'Inicial', duracion:'Una tarde', precio:2, mini:true,
+    nombre:'Manejo del estrés: Trabaja con calma bajo presión',
+    resumen:'Reconoce tu estrés y usa herramientas sencillas para trabajar con calma cuando todo parece urgente.',
+    competencias:[
+      'Reconocer tus señales de estrés. En el cuerpo, en la cabeza y en lo que haces, para darte cuenta a tiempo.',
+      'Ordenar tus prioridades cuando todo es urgente. Por ejemplo, tener cinco pendientes para hoy y saber por cuál empezar, o a quién preguntarle cuál va primero.',
+      'Hacer pausas que de verdad descansan y desconectarte al terminar. Una hora de cierre y un pequeño ritual para que el trabajo no se quede contigo toda la noche.',
+      'Pedir ayuda antes de llegar al límite. Con frases concretas para saber qué decir y a quién.'
+    ],
+    incluye:[
+      '2 módulos cortos, disponibles desde el primer día',
+      'Plan de acción para semanas pesadas, para descargar',
+      'Examen final y certificado de aprobación, incluido en el precio'
+    ],
+    nota:'Este minicurso no reemplaza la ayuda de un profesional de la salud.'
   }
 ];
 
@@ -1326,7 +1492,7 @@ function areaTeaser(a){
       <ul style="margin-top:.4rem">${lista.map(c=>`<li>${esc(c.nombre)}</li>`).join('')}</ul>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
-      <span class="price">US$${PRECIO}<small>por curso · pago único</small></span>
+      <span class="price">US$${Math.min(...lista.map(c=>c.precio||PRECIO))}<small>${lista.every(c=>c.mini)?'por minicurso · pago único':'por curso · pago único'}</small></span>
       <a class="btn btn--ghost" data-link href="#/cursos?area=${a.id}">${lista.length===1?'Ver el curso':`Ver los ${lista.length} cursos`}</a>
     </div>
   </article>`;
@@ -1345,23 +1511,23 @@ function cursoCard(c){
       <div class="area__ico" aria-hidden="true">${c.ico}</div>
     </div>
     <div>
-      <strong style="font-size:var(--tiny)">Qué vas a poder hacer</strong>
+      <strong style="font-size:var(--tiny)">Lo que vas a poder hacer</strong>
       <ul style="margin-top:.4rem">${c.competencias.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     </div>
     <div>
-      <strong style="font-size:var(--tiny)">Qué incluye</strong>
+      <strong style="font-size:var(--tiny)">¿Qué incluye?</strong>
       <ul style="margin-top:.4rem">${c.incluye.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
     </div>
     ${c.nota?`<p style="font-size:var(--tiny);color:var(--ink-60);border-left:3px solid var(--lavender);padding-left:.7rem;margin:0">${esc(c.nota)}</p>`:''}
     <div class="area__meta">
       <span class="tag tag--corn">${esc(c.nivel)}</span>
-      <span class="tag tag--lav">Asincrónico</span>
+      <span class="tag tag--lav">${c.mini?'Minicurso':'Asincrónico'}</span>
       <span class="tag">A tu ritmo</span>
     </div>
     <p style="margin:0;font-size:var(--small)"><a href="/cursos/${c.id}/">Ver la página del curso</a></p>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
-      <span class="price">US$${PRECIO}<small>Pago único · acceso sin vencimiento</small></span>
-      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar por US$${PRECIO}</a>
+      <span class="price">US$${c.precio||PRECIO}<small>Pago único · acceso sin vencimiento${c.mini?' · certificado incluido':''}</small></span>
+      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar por US$${c.precio||PRECIO}</a>
     </div>
   </article>`;
 }
