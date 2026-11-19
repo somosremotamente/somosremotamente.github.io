@@ -1405,7 +1405,7 @@ function renderResources(){
         <h4>${esc(r.titulo)}</h4>
         <p>${esc(r.desc)}</p>
         <div style="display:flex;gap:.75rem;align-items:center;flex-wrap:wrap">
-          <a class="btn btn--sm" href="${r.url}" ${r.url==='#'?'':'target="_blank" rel="noopener"'}>${esc(r.cta||'Descargar')}</a>
+          <a class="btn btn--sm" href="${r.url}" ${r.url==='#'?'':'target="_blank" rel="noopener" data-umami-event="Descargar recurso" data-umami-event-recurso="'+esc(r.titulo)+'"'}>${esc(r.cta||'Descargar')}</a>
           <span style="font-size:var(--tiny);color:var(--ink-60)">${esc(r.peso)}</span>
         </div>
       </div>
@@ -1426,6 +1426,10 @@ function enlazarCTAs(){
     a.href=url;
     a.target='_blank';
     a.rel='noopener';
+    /* Estadísticas (Umami): cuenta el clic, con el curso y la sección */
+    a.dataset.umamiEvent = (curso && /pack/i.test(curso)) ? 'Pack' : 'Inscribirme';
+    a.dataset.umamiEventCurso = curso || 'Sin curso elegido';
+    a.dataset.umamiEventLugar = (location.hash.replace(/^#\/?/,'').split(/[\/?]/)[0]) || 'inicio';
   });
 }
 
@@ -1440,6 +1444,7 @@ function enlazarContacto(){
     const msg=$('textarea',card)?.value.trim()||'';
     const asunto=`[${motivo}] Consulta de ${nombre||'la web'}`;
     const cuerpo=`Nombre: ${nombre}\nCorreo: ${correo}\nPaís: ${pais}\nMotivo: ${motivo}\n\n${msg}`;
+    if(window.umami) umami.track('Contacto por correo',{motivo});
     location.href=`mailto:${CORREO}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
   });
 }
@@ -1486,6 +1491,11 @@ function route(){
   }
 }
 window.addEventListener('hashchange',route);
+/* Estadísticas (Umami): cada sección (Cursos, Recursos, Contacto…) cuenta como una página */
+window.addEventListener('hashchange',()=>{
+  const v=(location.hash.replace(/^#\/?/,'').split(/[\/?]/)[0])||'inicio';
+  if(window.umami) umami.track(p=>({...p, url:'/'+v}));
+});
 
 /* ---------- LISTENERS ---------- */
 document.addEventListener('click',e=>{
@@ -1520,6 +1530,7 @@ document.addEventListener('submit',e=>{
   if(f.dataset.form==='newsletter'){
     const correo=$('input[name="correo"]',f)?.value.trim()||'';
     const cuerpo=`Hola, quiero recibir un aviso cuando publiquen material nuevo.\n\nMi correo: ${correo}`;
+    if(window.umami) umami.track('Aviso de material nuevo');
     location.href=`mailto:${CORREO}?subject=${encodeURIComponent('Avísenme del material nuevo')}&body=${encodeURIComponent(cuerpo)}`;
     f.reset();
   }
