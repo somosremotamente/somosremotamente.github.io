@@ -527,7 +527,7 @@ button{font:inherit;color:inherit}
   <div class="band band--beige" style="border-bottom:var(--line)">
     <div class="wrap">
       <h1 style="margin-bottom:.3rem">Los cursos</h1>
-      <p class="lead" style="max-width:62ch">Varios cursos independientes en distintas áreas. <strong>Los cursos cuestan US$5 y los minicursos de habilidades blandas, US$2.</strong> Se compran uno por uno (los cursos, también en pack) y el acceso no vence. Todos tienen módulos a tu ritmo, recursos descargables y un examen final.</p>
+      <p class="lead" style="max-width:62ch">Varios cursos independientes en distintas áreas. <strong>Los cursos cuestan US$5 y los minicursos de habilidades blandas, US$2.</strong> Se compran uno por uno (los cursos, también en pack) y el acceso no vence. Todos tienen módulos a tu ritmo, recursos descargables y un examen final. Y si quieres empezar sin pagar, <strong>«IA en tu día de trabajo remoto» es gratis</strong>.</p>
     </div>
   </div>
 
@@ -1142,6 +1142,23 @@ const CURSOS = [
     nota:'El curso enseña criterio de uso, no promete reemplazar tu trabajo con IA.'
   },
   {
+    id:'ia-en-tu-dia', area:'productividad', ico:'💡', nivel:'Inicial', duracion:'Unos 60 minutos', gratis:true,
+    form:"https://docs.google.com/forms/d/e/1FAIpQLSesdWObBMf4gqQx83_Os5eKyC7JxGamNdG_cn0TfaucsbdAXw/viewform",
+    nombre:"IA en tu día de trabajo remoto",
+    resumen:"Un curso corto y gratis para usar la IA en tres tareas de todas las semanas: escribir correos, organizar tu semana y resumir información, cuidando los datos de tu trabajo.",
+    competencias:[
+      "Escribir y responder correos con ayuda de la IA. Por ejemplo: pedirle a un cliente unos archivos que faltan o responder a alguien molesto, con el tono que quieres y sin quedarte mirando la pantalla.",
+      "Organizar tu semana. Vas a pasar tu lista de pendientes, tal como te sale, a un plan por días que respete tu horario, y a reajustarlo cuando algo cambia.",
+      "Resumir reuniones y documentos largos. Notas sueltas que se convierten en acuerdos, responsables y fechas, listos para enviar al equipo.",
+      "Cuidar la información de tu trabajo. Vas a saber qué nunca conviene pegar en una IA y cómo quitar nombres y cifras antes de hacerlo."
+    ],
+    incluye:[
+      "3 módulos cortos, unos 60 minutos en total",
+      "5 instrucciones listas para correos, una plantilla para planificar tu semana y una lista de uso responsable de la IA",
+      "Examen final corto y certificado de aprobación opcional, de pago"
+    ]
+  },
+  {
     id:'automatizacion', area:'productividad', ico:'⚙️', nivel:'Intermedio', duracion:'4–6 semanas',
     nombre:'Automatización sin código',
     resumen:'Conectar las herramientas que ya usas para que el trabajo repetitivo se haga solo, sin escribir una línea de código.',
@@ -1492,7 +1509,7 @@ function areaTeaser(a){
       <ul style="margin-top:.4rem">${lista.map(c=>`<li>${esc(c.nombre)}</li>`).join('')}</ul>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
-      <span class="price">US$${Math.min(...lista.map(c=>c.precio||PRECIO))}<small>${lista.every(c=>c.mini)?'por minicurso · pago único':'por curso · pago único'}</small></span>
+      <span class="price">US$${Math.min(...lista.filter(c=>!c.gratis).map(c=>c.precio||PRECIO))}<small>${lista.every(c=>c.mini)?'por minicurso · pago único':'por curso · pago único'}${lista.some(c=>c.gratis)?' · y uno gratis':''}</small></span>
       <a class="btn btn--ghost" data-link href="#/cursos?area=${a.id}">${lista.length===1?'Ver el curso':`Ver los ${lista.length} cursos`}</a>
     </div>
   </article>`;
@@ -1521,13 +1538,16 @@ function cursoCard(c){
     ${c.nota?`<p style="font-size:var(--tiny);color:var(--ink-60);border-left:3px solid var(--lavender);padding-left:.7rem;margin:0">${esc(c.nota)}</p>`:''}
     <div class="area__meta">
       <span class="tag tag--corn">${esc(c.nivel)}</span>
-      <span class="tag tag--lav">${c.mini?'Minicurso':'Asincrónico'}</span>
+      <span class="tag tag--lav">${c.gratis?'Curso gratis':c.mini?'Minicurso':'Asincrónico'}</span>
       <span class="tag">A tu ritmo</span>
     </div>
     <p style="margin:0;font-size:var(--small)"><a href="/cursos/${c.id}/">Ver la página del curso</a></p>
     <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:var(--line-thin);padding-top:1rem;margin-top:auto">
-      <span class="price">US$${c.precio||PRECIO}<small>Pago único · acceso sin vencimiento${c.mini?' · certificado incluido':''}</small></span>
-      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar por US$${c.precio||PRECIO}</a>
+      ${c.gratis
+        ? `<span class="price">Gratis<small>Acceso sin vencimiento · certificado opcional, de pago</small></span>
+      <a class="btn btn--corn" href="${c.form}" target="_blank" rel="noopener" data-umami-event="Inscribirme" data-umami-event-curso="${esc(c.nombre)}" data-umami-event-lugar="cursos">Inscribirme gratis</a>`
+        : `<span class="price">US$${c.precio||PRECIO}<small>Pago único · acceso sin vencimiento${c.mini?' · certificado incluido':''}</small></span>
+      <a class="btn btn--corn" data-cta data-curso="${esc(c.nombre)}" href="#">Empezar por US$${c.precio||PRECIO}</a>`}
     </div>
   </article>`;
 }
