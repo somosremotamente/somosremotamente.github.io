@@ -1557,6 +1557,10 @@ const FAQ = [
   ]}
 ];
 
+/* ---------- Tipo de curso en el formulario de inscripción (20-nov-2026) ---------- */
+const FORM_CAMPO_TIPO = 'entry.1636945368';
+const TIPO_FORM = {completos:'Curso completo (US$5)', minicursos:'Minicurso (US$2)', gratis:'Curso gratis'};
+
 const area  = id => AREAS.find(a=>a.id===id);
 const $  = (s,c=document)=>c.querySelector(s);
 const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
@@ -1586,9 +1590,7 @@ function cursoCard(c,i){
   const precio = c.gratis ? '<b>Gratis</b> · certificado opcional'
     : c.mini ? `<b>US$${c.precio||PRECIO}</b> · pago único · certificado incluido`
     : `<b>US$${c.precio||PRECIO}</b> · pago único · acceso sin vencimiento`;
-  const inscribir = c.gratis
-    ? `<a class="btn btn--ghost btn--sm" href="${c.form}" target="_blank" rel="noopener" data-umami-event="Inscribirme" data-umami-event-curso="${esc(c.nombre)}" data-umami-event-lugar="cursos">Inscribirme gratis</a>`
-    : `<a class="btn btn--ghost btn--sm" data-cta data-curso="${esc(c.nombre)}" href="#">Inscribirme</a>`;
+  const inscribir = `<a class="btn btn--ghost btn--sm" data-cta data-curso="${esc(c.nombre)}" data-tipo="${tipoDe(c)}" href="#">${c.gratis?'Inscribirme gratis':'Inscribirme'}</a>`;
   return `<article class="ccard lift rv" style="--i:${i%3}">
     <p class="area-l">${c.mini?'Minicurso':esc(a.nombre)}</p>
     <h3><a href="/cursos/${c.id}/">${esc(c.nombre)}</a></h3>
@@ -1611,7 +1613,7 @@ function packCard(){
     </div>
     <div class="side">
       <p class="price-s" style="color:var(--ink-60)"><b style="color:var(--ink)">US$15</b> · pago único · acceso sin vencimiento</p>
-      <a class="btn btn--corn" data-cta data-curso="Pack Empieza en remoto" href="#">Quiero el pack ${flecha}</a>
+      <a class="btn btn--corn" data-cta data-curso="Pack Empieza en remoto" data-tipo="completos" href="#">Quiero el pack ${flecha}</a>
     </div>
   </div>`;
 }
@@ -1680,7 +1682,12 @@ function enlazarCTAs(){
   $$('[data-cta]').forEach(a=>{
     const curso=a.dataset.curso;
     let url=FORM_INSCRIPCION;
-    if(curso) url += (url.includes('?')?'&':'?') + 'usp=pp_url&' + FORM_CAMPO_CURSO + '=' + encodeURIComponent(curso);
+    const tipo=TIPO_FORM[a.dataset.tipo];
+    if(curso||tipo){
+      url += (url.includes('?')?'&':'?') + 'usp=pp_url';
+      if(curso) url += '&' + FORM_CAMPO_CURSO + '=' + encodeURIComponent(curso);
+      if(tipo)  url += '&' + FORM_CAMPO_TIPO + '=' + encodeURIComponent(tipo);
+    }
     a.href=url; a.target='_blank'; a.rel='noopener';
     a.dataset.umamiEvent = (curso && /pack/i.test(curso)) ? 'Pack' : 'Inscribirme';
     a.dataset.umamiEventCurso = curso || 'Sin curso elegido';
